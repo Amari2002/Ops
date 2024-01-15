@@ -122,7 +122,9 @@
   <ItemGroup>
     <ClCompile Include="Form2.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="NPP.cpp" />
     <ClCompile Include="SJF.cpp" />
+    <ClCompile Include="SRTF.cpp" />
     <ClCompile Include="Welcome.cpp" />
     <ClCompile Include="Output.cpp" />
   </ItemGroup>

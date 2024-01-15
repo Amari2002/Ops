@@ -30,6 +30,12 @@
     <ClCompile Include="SJF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NPP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SRTF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Welcome.h">
