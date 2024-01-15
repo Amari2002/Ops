@@ -5,6 +5,11 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ops", "Ops.vcxproj", "{406DFA4D-8BF0-49B2-A62A-EA56D36718BA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9268E59F-1DE0-4BC1-9205-DA4AE4F7C3A0}"
+	ProjectSection(SolutionItems) = preProject
+		SJF.cpp = SJF.cpp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

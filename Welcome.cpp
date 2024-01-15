@@ -12,6 +12,6 @@ int main(array<String^>^ args)
 	Application::EnableVisualStyles;
 	Ops::Welcome frm;
 	Application::Run(% frm);
-	
+	return 0;
 }
 

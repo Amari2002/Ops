@@ -8,7 +8,7 @@
 #include "Process.h"
 
 // Main function for SJF
-std::tuple<Process_np, Time_process> SJF(std::string arrival, std::string burst) {
+std::tuple<std::vector<Process_np>, std::vector<Time_process>> SJF(std::string arrival, std::string burst) {
     // vector for process inputs will be push to the processes vector
     // processes will be the raw input data, nothing will be changed here once done inputting
     std::vector<Process_np> processes;
@@ -57,7 +57,7 @@ std::tuple<Process_np, Time_process> SJF(std::string arrival, std::string burst)
     // while loop for separation of inputs and storing those values in the processes vector
     // alongside with summing up the burst time of each processes
     while (ss_at >> at_num && ss_bt >> bt_num) {
-        Process p;
+        Process_np p;
         p.id = id_num;
         p.at = static_cast<unsigned>(at_num);
         p.bt = static_cast<unsigned>(bt_num);
