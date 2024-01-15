@@ -120,13 +120,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="Form2.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Ops.cpp" />
     <ClCompile Include="Output.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithm.h">
+    <ClInclude Include="Form2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Input.h">
@@ -140,8 +140,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Algorithm.resx">
-      <DependentUpon>Algorithm.h</DependentUpon>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Input.resx">
       <DependentUpon>Input.h</DependentUpon>

@@ -122,6 +122,7 @@ namespace Ops {
 			// 
 			// label4
 			// 
+			this->label4->BackColor = System::Drawing::Color::LightPink;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(34, 243);
@@ -130,6 +131,7 @@ namespace Ops {
 			this->label4->TabIndex = 15;
 			this->label4->Text = L"Arrival Time";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label4->Click += gcnew System::EventHandler(this, &Input::label4_Click);
 			// 
 			// label3
 			// 
@@ -147,13 +149,14 @@ namespace Ops {
 			// 
 			// label1
 			// 
+			this->label1->BackColor = System::Drawing::Color::LightPink;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(43, 382);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(369, 47);
 			this->label1->TabIndex = 18;
-			this->label1->Text = L"Arrival Time";
+			this->label1->Text = L"Burst Time";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label2
@@ -331,7 +334,7 @@ namespace Ops {
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(638, 301);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(220, 42);
+			this->label5->Size = System::Drawing::Size(218, 41);
 			this->label5->TabIndex = 34;
 			this->label5->Text = L"Ex: 2 4 6 7 9 8 3 ";
 			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -356,7 +359,7 @@ namespace Ops {
 				static_cast<System::Byte>(0)));
 			this->label7->Location = System::Drawing::Point(638, 441);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(220, 42);
+			this->label7->Size = System::Drawing::Size(218, 41);
 			this->label7->TabIndex = 36;
 			this->label7->Text = L"Ex: 2 4 6 7 9 8 3 ";
 			this->label7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -377,7 +380,7 @@ namespace Ops {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::LightPink;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(962, 615);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label7);
@@ -414,5 +417,7 @@ namespace Ops {
 #pragma endregion
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

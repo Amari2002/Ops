@@ -12,10 +12,10 @@ namespace Ops {
 	/// <summary>
 	/// Summary for Algorithm
 	/// </summary>
-	public ref class Algorithm : public System::Windows::Forms::Form
+	public ref class Form2 : public System::Windows::Forms::Form
 	{
 	public:
-		Algorithm(void)
+		Form2(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace Ops {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Algorithm()
+		~Form2()
 		{
 			if (components)
 			{
@@ -107,14 +107,15 @@ namespace Ops {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::SandyBrown;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 50, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Black", 35, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(12, 9);
+			this->label2->Location = System::Drawing::Point(75, 21);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(703, 100);
+			this->label2->Size = System::Drawing::Size(803, 83);
 			this->label2->TabIndex = 10;
 			this->label2->Text = L"PROCESS SCHEDULING";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label2->Click += gcnew System::EventHandler(this, &Form2::label2_Click);
 			// 
 			// pictureBox3
 			// 
@@ -133,9 +134,9 @@ namespace Ops {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(293, 161);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(384, 78);
+			this->label3->Size = System::Drawing::Size(263, 78);
 			this->label3->TabIndex = 12;
-			this->label3->Text = L"Algorithm";
+			this->label3->Text = L"Form2";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label1
@@ -149,10 +150,11 @@ namespace Ops {
 			this->label1->TabIndex = 13;
 			this->label1->Text = L"Preemptive";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->label1->Click += gcnew System::EventHandler(this, &Algorithm::label1_Click);
+			this->label1->Click += gcnew System::EventHandler(this, &Form2::label1_Click);
 			// 
 			// label4
 			// 
+			this->label4->BackColor = System::Drawing::Color::LightPink;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Impact", 27, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(507, 268);
@@ -194,7 +196,7 @@ namespace Ops {
 			this->button3->TabIndex = 17;
 			this->button3->Text = L"NPP";
 			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &Algorithm::button3_Click);
+			this->button3->Click += gcnew System::EventHandler(this, &Form2::button3_Click);
 			// 
 			// pictureBox9
 			// 
@@ -204,7 +206,7 @@ namespace Ops {
 			this->pictureBox9->Size = System::Drawing::Size(20, 18);
 			this->pictureBox9->TabIndex = 24;
 			this->pictureBox9->TabStop = false;
-			this->pictureBox9->Click += gcnew System::EventHandler(this, &Algorithm::pictureBox9_Click);
+			this->pictureBox9->Click += gcnew System::EventHandler(this, &Form2::pictureBox9_Click);
 			// 
 			// pictureBox8
 			// 
@@ -214,7 +216,7 @@ namespace Ops {
 			this->pictureBox8->Size = System::Drawing::Size(20, 18);
 			this->pictureBox8->TabIndex = 23;
 			this->pictureBox8->TabStop = false;
-			this->pictureBox8->Click += gcnew System::EventHandler(this, &Algorithm::pictureBox8_Click);
+			this->pictureBox8->Click += gcnew System::EventHandler(this, &Form2::pictureBox8_Click);
 			// 
 			// pictureBox4
 			// 
@@ -224,7 +226,7 @@ namespace Ops {
 			this->pictureBox4->Size = System::Drawing::Size(20, 18);
 			this->pictureBox4->TabIndex = 19;
 			this->pictureBox4->TabStop = false;
-			this->pictureBox4->Click += gcnew System::EventHandler(this, &Algorithm::pictureBox4_Click);
+			this->pictureBox4->Click += gcnew System::EventHandler(this, &Form2::pictureBox4_Click);
 			// 
 			// pictureBox2
 			// 
@@ -234,7 +236,7 @@ namespace Ops {
 			this->pictureBox2->Size = System::Drawing::Size(20, 18);
 			this->pictureBox2->TabIndex = 18;
 			this->pictureBox2->TabStop = false;
-			this->pictureBox2->Click += gcnew System::EventHandler(this, &Algorithm::pictureBox2_Click);
+			this->pictureBox2->Click += gcnew System::EventHandler(this, &Form2::pictureBox2_Click);
 			// 
 			// pictureBox5
 			// 
@@ -254,11 +256,11 @@ namespace Ops {
 			this->pictureBox6->TabIndex = 26;
 			this->pictureBox6->TabStop = false;
 			// 
-			// Algorithm
+			// Form2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::LightPink;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(938, 610);
 			this->Controls->Add(this->pictureBox6);
 			this->Controls->Add(this->pictureBox5);
@@ -275,7 +277,7 @@ namespace Ops {
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->pictureBox1);
-			this->Name = L"Algorithm";
+			this->Name = L"Form2";
 			this->Text = L"Algorithm";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
@@ -307,6 +309,8 @@ private: System::Void pictureBox8_Click(System::Object^ sender, System::EventArg
 private: System::Void pictureBox5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

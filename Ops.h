@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Form2.h"
 namespace Ops {
 
 	using namespace System;
@@ -109,6 +109,7 @@ namespace Ops {
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Khaki;
+			this->pictureBox3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox3->Location = System::Drawing::Point(12, 145);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(938, 449);
@@ -122,21 +123,22 @@ namespace Ops {
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(471, 508);
+			this->button1->Location = System::Drawing::Point(446, 507);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(72, 48);
 			this->button1->TabIndex = 4;
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &Ops::button1_Click_1);
 			// 
 			// label1
 			// 
 			this->label1->AutoEllipsis = true;
 			this->label1->BackColor = System::Drawing::Color::SandyBrown;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(87, 297);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(786, 172);
+			this->label1->Size = System::Drawing::Size(812, 167);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"Hi there User! Evaluate scheduling strategies in a seamless manner to handle task"
 				L"s effectively. Perfect for both developers alike and students, get right in and "
@@ -147,11 +149,11 @@ namespace Ops {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::SandyBrown;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 50, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Black", 35, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(12, 9);
+			this->label2->Location = System::Drawing::Point(96, 18);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(703, 100);
+			this->label2->Size = System::Drawing::Size(803, 83);
 			this->label2->TabIndex = 7;
 			this->label2->Text = L"PROCESS SCHEDULING";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -160,17 +162,18 @@ namespace Ops {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::Color::Khaki;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 55, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Arial", 50, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(188, 166);
+			this->label3->Location = System::Drawing::Point(241, 182);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(584, 107);
+			this->label3->Size = System::Drawing::Size(507, 97);
 			this->label3->TabIndex = 8;
 			this->label3->Text = L"WELCOME!";
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::White;
+			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox2->Location = System::Drawing::Point(3, 136);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(20, 18);
@@ -180,6 +183,7 @@ namespace Ops {
 			// pictureBox4
 			// 
 			this->pictureBox4->BackColor = System::Drawing::Color::White;
+			this->pictureBox4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox4->Location = System::Drawing::Point(471, 136);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(20, 18);
@@ -189,6 +193,7 @@ namespace Ops {
 			// pictureBox5
 			// 
 			this->pictureBox5->BackColor = System::Drawing::Color::White;
+			this->pictureBox5->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox5->Location = System::Drawing::Point(939, 136);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(20, 18);
@@ -198,6 +203,7 @@ namespace Ops {
 			// pictureBox6
 			// 
 			this->pictureBox6->BackColor = System::Drawing::Color::White;
+			this->pictureBox6->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox6->Location = System::Drawing::Point(939, 488);
 			this->pictureBox6->Name = L"pictureBox6";
 			this->pictureBox6->Size = System::Drawing::Size(20, 18);
@@ -207,6 +213,7 @@ namespace Ops {
 			// pictureBox7
 			// 
 			this->pictureBox7->BackColor = System::Drawing::Color::White;
+			this->pictureBox7->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox7->Location = System::Drawing::Point(939, 527);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(20, 18);
@@ -216,6 +223,7 @@ namespace Ops {
 			// pictureBox8
 			// 
 			this->pictureBox8->BackColor = System::Drawing::Color::White;
+			this->pictureBox8->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox8->Location = System::Drawing::Point(3, 585);
 			this->pictureBox8->Name = L"pictureBox8";
 			this->pictureBox8->Size = System::Drawing::Size(20, 18);
@@ -225,6 +233,7 @@ namespace Ops {
 			// pictureBox9
 			// 
 			this->pictureBox9->BackColor = System::Drawing::Color::White;
+			this->pictureBox9->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox9->Location = System::Drawing::Point(471, 585);
 			this->pictureBox9->Name = L"pictureBox9";
 			this->pictureBox9->Size = System::Drawing::Size(20, 18);
@@ -235,7 +244,7 @@ namespace Ops {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::LightPink;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(962, 615);
 			this->Controls->Add(this->pictureBox9);
 			this->Controls->Add(this->pictureBox8);
@@ -275,5 +284,12 @@ namespace Ops {
 	}
 	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) 
+	{
+		this->Hide();
+		Form2^ form = gcnew Form2();
+		form->ShowDialog();
+		this->Close();
+	}
+};
 }
