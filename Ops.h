@@ -136,7 +136,7 @@ namespace Ops {
 			this->label1->BackColor = System::Drawing::Color::SandyBrown;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(87, 297);
+			this->label1->Location = System::Drawing::Point(80, 297);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(812, 167);
 			this->label1->TabIndex = 6;
@@ -151,7 +151,7 @@ namespace Ops {
 			this->label2->BackColor = System::Drawing::Color::SandyBrown;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Black", 35, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(96, 18);
+			this->label2->Location = System::Drawing::Point(42, 19);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(803, 83);
 			this->label2->TabIndex = 7;
@@ -164,7 +164,7 @@ namespace Ops {
 			this->label3->BackColor = System::Drawing::Color::Khaki;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Arial", 50, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(241, 182);
+			this->label3->Location = System::Drawing::Point(226, 182);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(507, 97);
 			this->label3->TabIndex = 8;
