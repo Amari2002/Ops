@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ops.cpp">
+    <ClCompile Include="Welcome.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Form2.cpp">
@@ -29,7 +29,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ops.h">
+    <ClInclude Include="Welcome.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Form2.h">

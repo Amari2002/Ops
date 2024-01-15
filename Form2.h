@@ -1,4 +1,5 @@
 #pragma once
+#include "Welcome.h"
 
 namespace Ops {
 
@@ -15,8 +16,18 @@ namespace Ops {
 	public ref class Form2 : public System::Windows::Forms::Form
 	{
 	public:
+		Form^ form;
 		Form2(void)
 		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+
+		Form2(Form ^form1)
+		{
+			form = form1;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -56,6 +67,7 @@ namespace Ops {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Button^ button4;
 	protected:
 
 	protected:
@@ -73,6 +85,7 @@ namespace Ops {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form2::typeid));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -88,6 +101,7 @@ namespace Ops {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
@@ -116,16 +130,16 @@ namespace Ops {
 			this->pictureBox3->Size = System::Drawing::Size(914, 443);
 			this->pictureBox3->TabIndex = 11;
 			this->pictureBox3->TabStop = false;
+			this->pictureBox3->Click += gcnew System::EventHandler(this, &Form2::pictureBox3_Click);
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::Color::Khaki;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Arial Black", 25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(330, 181);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold));
+			this->label3->Location = System::Drawing::Point(356, 192);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(309, 59);
+			this->label3->Size = System::Drawing::Size(248, 48);
 			this->label3->TabIndex = 12;
 			this->label3->Text = L"ALGORITHM";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -239,7 +253,7 @@ namespace Ops {
 			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(505, 363);
+			this->button2->Location = System::Drawing::Point(505, 365);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(321, 56);
 			this->button2->TabIndex = 28;
@@ -252,7 +266,7 @@ namespace Ops {
 			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(505, 444);
+			this->button3->Location = System::Drawing::Point(505, 445);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(321, 56);
 			this->button3->TabIndex = 29;
@@ -265,7 +279,7 @@ namespace Ops {
 			this->label4->Font = (gcnew System::Drawing::Font(L"Impact", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->label4->Location = System::Drawing::Point(507, 265);
+			this->label4->Location = System::Drawing::Point(507, 268);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(319, 69);
 			this->label4->TabIndex = 30;
@@ -273,12 +287,27 @@ namespace Ops {
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label4->Click += gcnew System::EventHandler(this, &Form2::label4_Click);
 			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::Khaki;
+			this->button4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button4.BackgroundImage")));
+			this->button4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button4->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::White;
+			this->button4->Location = System::Drawing::Point(28, 166);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(72, 48);
+			this->button4->TabIndex = 31;
+			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &Form2::button4_Click);
+			// 
 			// Form2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(938, 610);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
@@ -331,11 +360,21 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+		this->Close();
+		this->Hide();
+		form->ShowDialog();
+}
+private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

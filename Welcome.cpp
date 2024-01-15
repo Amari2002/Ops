@@ -1,4 +1,4 @@
-#include "Ops.h"
+#include "Welcome.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -10,8 +10,8 @@ int main(array<String^>^ args)
 {
 	Application::SetCompatibleTextRenderingDefault;
 	Application::EnableVisualStyles;
-	Ops::Ops frm;
+	Ops::Welcome frm;
 	Application::Run(% frm);
-
+	
 }
 

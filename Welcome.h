@@ -1,5 +1,6 @@
 #pragma once
 #include "Form2.h"
+
 namespace Ops {
 
 	using namespace System;
@@ -12,10 +13,10 @@ namespace Ops {
 	/// <summary>
 	/// Summary for Ops
 	/// </summary>
-	public ref class Ops : public System::Windows::Forms::Form
+	public ref class Welcome : public System::Windows::Forms::Form
 	{
 	public:
-		Ops(void)
+		Welcome(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +28,7 @@ namespace Ops {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Ops()
+		~Welcome()
 		{
 			if (components)
 			{
@@ -72,7 +73,7 @@ namespace Ops {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Ops::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Welcome::typeid));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -128,7 +129,7 @@ namespace Ops {
 			this->button1->Size = System::Drawing::Size(72, 48);
 			this->button1->TabIndex = 4;
 			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &Ops::button1_Click_1);
+			this->button1->Click += gcnew System::EventHandler(this, &Welcome::button1_Click_1);
 			// 
 			// label1
 			// 
@@ -261,7 +262,7 @@ namespace Ops {
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"Ops";
 			this->Text = L"Process Scheduler";
-			this->Load += gcnew System::EventHandler(this, &Ops::Ops_Load);
+			this->Load += gcnew System::EventHandler(this, &Welcome::Welcome_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -278,7 +279,7 @@ namespace Ops {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void Ops_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Welcome_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -287,7 +288,7 @@ namespace Ops {
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) 
 	{
 		this->Hide();
-		Form2^ form = gcnew Form2();
+		Form2^ form = gcnew Form2(this);
 		form->ShowDialog();
 		this->Close();
 	}
