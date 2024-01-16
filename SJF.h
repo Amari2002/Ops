@@ -1,4 +1,10 @@
 #pragma once
+#include <vector>
+#include <string>
+#include <sstream>
+#include <utility>
+#include <algorithm>
+#include <stdexcept>
 
 namespace Ops {
 
@@ -9,6 +15,27 @@ namespace Ops {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+
+
+	struct Time_process {
+		unsigned p_id = 0;
+		std::pair<unsigned, unsigned> time;
+	};
+
+
+	struct Process {
+		unsigned id = 0;
+		unsigned at = 0;
+		unsigned bt = 0;
+		unsigned cp = 0;
+		unsigned tt = 0;
+		unsigned wt = 0;
+		void TTWT(const unsigned& completion_time) {
+			this->cp = completion_time;
+			this->tt = this->cp - this->at;
+			this->wt = this->tt - this->bt;
+		}
+	};
 	/// <summary>
 	/// Summary for SJF
 	/// </summary>
@@ -94,6 +121,7 @@ namespace Ops {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(430, 51);
 			this->textBox1->TabIndex = 58;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &SJF::textBox1_TextChanged);
 			// 
 			// button1
 			// 
@@ -218,5 +246,7 @@ namespace Ops {
 
 		}
 #pragma endregion
-	};
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
