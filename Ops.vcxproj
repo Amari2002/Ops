@@ -122,7 +122,9 @@
   <ItemGroup>
     <ClCompile Include="Form2.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="NPP.cpp" />
     <ClCompile Include="SJF.cpp" />
+    <ClCompile Include="SRTF.cpp" />
     <ClCompile Include="Welcome.cpp" />
     <ClCompile Include="Output.cpp" />
   </ItemGroup>
@@ -133,7 +135,13 @@
     <ClInclude Include="Input.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="NPP.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SJF.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="SRTF.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Welcome.h">
@@ -150,8 +158,14 @@
     <EmbeddedResource Include="Input.resx">
       <DependentUpon>Input.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NPP.resx">
+      <DependentUpon>NPP.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SJF.resx">
       <DependentUpon>SJF.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SRTF.resx">
+      <DependentUpon>SRTF.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.h</DependentUpon>

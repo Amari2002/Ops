@@ -30,6 +30,12 @@
     <ClCompile Include="SJF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NPP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SRTF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Welcome.h">
@@ -45,6 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SJF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NPP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SRTF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
