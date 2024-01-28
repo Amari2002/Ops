@@ -1,4 +1,8 @@
 #pragma once
+#ifndef SJF_H
+#define SJF_H
+
+
 #include <vector>
 #include <string>
 #include <sstream>
@@ -7,7 +11,8 @@
 #include <stdexcept>
 
 namespace Ops {
-
+	
+	
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -42,12 +47,24 @@ namespace Ops {
 	public ref class SJF : public System::Windows::Forms::Form
 	{
 	public:
+		Form^ SJFView;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label7;
+	public:
+
+	public:
+	public:
+		Form^ form1;
 		SJF(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+		SJF(Form^ SJFViewParam) {
+			SJFView = SJFViewParam;
+			InitializeComponent();
 		}
 
 	protected:
@@ -72,6 +89,7 @@ namespace Ops {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ button4;
 
 	private:
 		/// <summary>
@@ -86,6 +104,7 @@ namespace Ops {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SJF::typeid));
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -96,6 +115,9 @@ namespace Ops {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -135,6 +157,7 @@ namespace Ops {
 			this->button1->TabIndex = 56;
 			this->button1->Text = L"COMPUTE";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &SJF::button1_Click);
 			// 
 			// label6
 			// 
@@ -181,7 +204,7 @@ namespace Ops {
 			this->label3->BackColor = System::Drawing::Color::Khaki;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(25, 156);
+			this->label3->Location = System::Drawing::Point(16, 188);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(67, 32);
@@ -207,7 +230,7 @@ namespace Ops {
 			this->pictureBox3->Location = System::Drawing::Point(10, 130);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(704, 360);
+			this->pictureBox3->Size = System::Drawing::Size(704, 736);
 			this->pictureBox3->TabIndex = 50;
 			this->pictureBox3->TabStop = false;
 			// 
@@ -221,12 +244,52 @@ namespace Ops {
 			this->pictureBox1->TabIndex = 49;
 			this->pictureBox1->TabStop = false;
 			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::Khaki;
+			this->button4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button4.BackgroundImage")));
+			this->button4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button4->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::White;
+			this->button4->Location = System::Drawing::Point(22, 142);
+			this->button4->Margin = System::Windows::Forms::Padding(2);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(54, 39);
+			this->button4->TabIndex = 59;
+			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &SJF::button4_Click);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->BackColor = System::Drawing::Color::Khaki;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Impact", 24.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(29, 533);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(107, 41);
+			this->label5->TabIndex = 60;
+			this->label5->Text = L"Output";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(41, 591);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(35, 13);
+			this->label7->TabIndex = 61;
+			this->label7->Text = L"label7";
+			// 
 			// SJF
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoScroll = true;
 			this->BackColor = System::Drawing::Color::LightPink;
-			this->ClientSize = System::Drawing::Size(722, 500);
+			this->ClientSize = System::Drawing::Size(739, 498);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
@@ -239,6 +302,7 @@ namespace Ops {
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"SJF";
 			this->Text = L"SJF";
+			this->Load += gcnew System::EventHandler(this, &SJF::SJF_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
@@ -247,6 +311,18 @@ namespace Ops {
 		}
 #pragma endregion
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
 	}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	Close();
+	SJFView->Show();
+}
+private: System::Void SJF_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
+#endif // !SJF_H

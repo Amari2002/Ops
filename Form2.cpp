@@ -1,6 +1,4 @@
-#include "Welcome.h"
 #include "Form2.h"
-
 
 
 using namespace System;
