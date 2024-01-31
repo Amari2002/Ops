@@ -8,7 +8,9 @@
 #include <sstream>
 #include <utility>
 #include <algorithm>
+#include<stdlib.h>
 #include <stdexcept>
+#include <cliext/list>
 
 namespace Ops {
 	
@@ -19,8 +21,9 @@ namespace Ops {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	
 
-
+	
 
 	struct Time_process {
 		unsigned p_id = 0;
@@ -46,12 +49,21 @@ namespace Ops {
 	/// </summary>
 	public ref class SJF : public System::Windows::Forms::Form
 	{
+	private:
+		int arrivalTime;
+		int burstTime;
 	public:
 		Form^ SJFView;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ Output;
+	private: System::Windows::Forms::DataGridView^ SJFDataGrid;
+
+
+
+
 
 	public:
+
+	
 
 	public:
 	public:
@@ -121,9 +133,10 @@ namespace Ops {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->Output = (gcnew System::Windows::Forms::Label());
+			this->SJFDataGrid = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SJFDataGrid))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// textBoxBurstTime
@@ -235,7 +248,7 @@ namespace Ops {
 			this->pictureBox3->Location = System::Drawing::Point(10, 130);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(704, 736);
+			this->pictureBox3->Size = System::Drawing::Size(704, 396);
 			this->pictureBox3->TabIndex = 50;
 			this->pictureBox3->TabStop = false;
 			// 
@@ -248,6 +261,7 @@ namespace Ops {
 			this->pictureBox1->Size = System::Drawing::Size(728, 102);
 			this->pictureBox1->TabIndex = 49;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &SJF::pictureBox1_Click);
 			// 
 			// button4
 			// 
@@ -270,20 +284,20 @@ namespace Ops {
 			this->label5->BackColor = System::Drawing::Color::Khaki;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Impact", 24.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(29, 533);
+			this->label5->Location = System::Drawing::Point(12, 473);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(107, 41);
 			this->label5->TabIndex = 60;
 			this->label5->Text = L"Output";
 			// 
-			// Output
+			// SJFDataGrid
 			// 
-			this->Output->AutoSize = true;
-			this->Output->Location = System::Drawing::Point(41, 591);
-			this->Output->Name = L"Output";
-			this->Output->Size = System::Drawing::Size(35, 13);
-			this->Output->TabIndex = 61;
-			this->Output->Text = L"label7";
+			this->SJFDataGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->SJFDataGrid->Location = System::Drawing::Point(10, 529);
+			this->SJFDataGrid->Name = L"SJFDataGrid";
+			this->SJFDataGrid->Size = System::Drawing::Size(704, 281);
+			this->SJFDataGrid->TabIndex = 62;
+			this->SJFDataGrid->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SJF::dataGridView1_CellContentClick_1);
 			// 
 			// SJF
 			// 
@@ -291,8 +305,8 @@ namespace Ops {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::Color::LightPink;
-			this->ClientSize = System::Drawing::Size(739, 498);
-			this->Controls->Add(this->Output);
+			this->ClientSize = System::Drawing::Size(739, 535);
+			this->Controls->Add(this->SJFDataGrid);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->textBoxBurstTime);
@@ -310,6 +324,7 @@ namespace Ops {
 			this->Load += gcnew System::EventHandler(this, &SJF::SJF_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SJFDataGrid))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -327,11 +342,88 @@ private: System::Void SJF_Load(System::Object^ sender, System::EventArgs^ e) {
 private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	Output->Text = textBoxArrivalTime->Text;
+	String^ ar = textBoxArrivalTime->Text;
+	String^ br = textBoxBurstTime->Text;
+
+	// Split the input into individual values for arrival time and burst time
+	array<String^>^ arrivalValues = ar->Split(' ');
+	array<String^>^ burstValues = br->Split(' ');
+
+	// Validate and parse each value for arrival time
+	cliext::list<int> parsedArrivalValues;
+	for each (String ^ value in arrivalValues) {
+		int parsedValue;
+		if (Int32::TryParse(value, parsedValue)) {
+			parsedArrivalValues.push_back(parsedValue);
+		}
+		else {
+			MessageBox::Show("Invalid input for arrival time. Please enter valid numeric values separated by space.", "Error");
+			return;
+		}
+	}
+
+	// Validate and parse each value for burst time
+	cliext::list<int> parsedBurstValues;
+	for each (String ^ value in burstValues) {
+		int parsedValue;
+		if (Int32::TryParse(value, parsedValue)) {
+			parsedBurstValues.push_back(parsedValue);
+		}
+		else {
+			MessageBox::Show("Invalid input for burst time. Please enter valid numeric values separated by space.", "Error");
+			return;
+		}
+	}
+
+	// Check if the number of parsed values for arrival time and burst time match
+	if (parsedArrivalValues.size() != parsedBurstValues.size()) {
+		MessageBox::Show("Number of values for arrival time and burst time must be the same.", "Error");
+		return;
+	}
+
+	// Use the parsed values to set up the SJFDataGrid
+	SJFDataGrid->RowCount = parsedArrivalValues.size();
+	SJFDataGrid->ColumnCount = 3; // Set ColumnCount to 3 for process ID, arrival time, and burst time
+
+
+
+	// Create columns explicitly and set headers
+	SJFDataGrid->Columns->Add("Process", "Process");
+	SJFDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
+	SJFDataGrid->Columns->Add("BurstTime", "Burst Time"); // Add column for Burst Time
+
+	// Set the display order of the columns
+	SJFDataGrid->Columns["Process"]->DisplayIndex = 0;
+	SJFDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
+	SJFDataGrid->Columns["BurstTime"]->DisplayIndex = 2; // Set "BurstTime" column to be the third column
+
+	// Populate the cells with parsed values for both arrival time and burst time
+	int i = 0;
+	int processID = 1;
+	for each (int arrivalValue in parsedArrivalValues) {
+		// Set the process ID in the first column
+		SJFDataGrid->Rows[i]->Cells["Process"]->Value = processID;
+
+		// Set the arrival time in the second column
+		SJFDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = arrivalValue;
+
+		// Set the burst time in the third column
+		SJFDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstValues[i];
+
+		++i;
+		++processID;
+	}
 }
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 
 }
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void dataGridView1_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+};
+private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
 };
 }
 #endif // !SJF_H
