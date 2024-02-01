@@ -1,6 +1,15 @@
 #pragma once
 #ifndef SRTF_H
 #define SRTF_H
+
+#include <vector>
+#include <string>
+#include <sstream>
+#include <utility>
+#include <algorithm>
+#include<stdlib.h>
+#include <stdexcept>
+#include <cliext/list>
 namespace Ops {
 
 	using namespace System;
@@ -41,7 +50,7 @@ namespace Ops {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ Output;
+
 	protected:
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ button4;
@@ -55,6 +64,7 @@ namespace Ops {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::DataGridView^ SRTFDataGrid;
 
 	private:
 		/// <summary>
@@ -70,7 +80,6 @@ namespace Ops {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SRTF::typeid));
-			this->Output = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->textBoxBurstTime = (gcnew System::Windows::Forms::TextBox());
@@ -83,18 +92,11 @@ namespace Ops {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->SRTFDataGrid = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SRTFDataGrid))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// Output
-			// 
-			this->Output->AutoSize = true;
-			this->Output->Location = System::Drawing::Point(44, 591);
-			this->Output->Name = L"Output";
-			this->Output->Size = System::Drawing::Size(35, 13);
-			this->Output->TabIndex = 74;
-			this->Output->Text = L"label7";
 			// 
 			// label5
 			// 
@@ -157,6 +159,7 @@ namespace Ops {
 			this->button1->TabIndex = 69;
 			this->button1->Text = L"COMPUTE";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &SRTF::button1_Click);
 			// 
 			// label6
 			// 
@@ -243,12 +246,22 @@ namespace Ops {
 			this->pictureBox1->TabIndex = 62;
 			this->pictureBox1->TabStop = false;
 			// 
+			// SRTFDataGrid
+			// 
+			this->SRTFDataGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->SRTFDataGrid->Location = System::Drawing::Point(33, 589);
+			this->SRTFDataGrid->Name = L"SRTFDataGrid";
+			this->SRTFDataGrid->Size = System::Drawing::Size(668, 276);
+			this->SRTFDataGrid->TabIndex = 74;
+			this->SRTFDataGrid->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SRTF::SRTFDataGrid_CellContentClick);
+			// 
 			// SRTF
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoScroll = true;
 			this->ClientSize = System::Drawing::Size(739, 498);
-			this->Controls->Add(this->Output);
+			this->Controls->Add(this->SRTFDataGrid);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->textBoxBurstTime);
@@ -265,6 +278,7 @@ namespace Ops {
 			this->Text = L"SRTF";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SRTFDataGrid))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -275,6 +289,79 @@ namespace Ops {
 		Close();
 		SRTFView->Show();
 	}
+private: System::Void SRTFDataGrid_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ ar = textBoxArrivalTime->Text;
+	String^ br = textBoxBurstTime->Text;
+
+	// Split the input into individual values for arrival time and burst time
+	array<String^>^ arrivalValues = ar->Split(' ');
+	array<String^>^ burstValues = br->Split(' ');
+
+	// Validate and parse each value for arrival time
+	cliext::list<int> parsedArrivalValues;
+	for each (String ^ value in arrivalValues) {
+		int parsedValue;
+		if (Int32::TryParse(value, parsedValue)) {
+			parsedArrivalValues.push_back(parsedValue);
+		}
+		else {
+			MessageBox::Show("Invalid input for arrival time. Please enter valid numeric values separated by space.", "Error");
+			return;
+		}
+	}
+
+	// Validate and parse each value for burst time
+	cliext::list<int> parsedBurstValues;
+	for each (String ^ value in burstValues) {
+		int parsedValue;
+		if (Int32::TryParse(value, parsedValue)) {
+			parsedBurstValues.push_back(parsedValue);
+		}
+		else {
+			MessageBox::Show("Invalid input for burst time. Please enter valid numeric values separated by space.", "Error");
+			return;
+		}
+	}
+
+	// Check if the number of parsed values for arrival time and burst time match
+	if (parsedArrivalValues.size() != parsedBurstValues.size()) {
+		MessageBox::Show("Number of values for arrival time and burst time must be the same.", "Error");
+		return;
+	}
+
+	// Use the parsed values to set up the SJFDataGrid
+	SRTFDataGrid->RowCount = parsedArrivalValues.size();
+	SRTFDataGrid->ColumnCount = 3; // Set ColumnCount to 3 for process ID, arrival time, and burst time
+
+	// Create columns explicitly and set headers
+	SRTFDataGrid->Columns->Add("Process", "Process");
+	SRTFDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
+	SRTFDataGrid->Columns->Add("BurstTime", "Burst Time"); // Add column for Burst Time
+
+	// Set the display order of the columns
+	SRTFDataGrid->Columns["Process"]->DisplayIndex = 0;
+	SRTFDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
+	SRTFDataGrid->Columns["BurstTime"]->DisplayIndex = 2; // Set "BurstTime" column to be the third column
+
+	// Populate the cells with parsed values for both arrival time and burst time
+	int i = 0;
+	int processID = 1;
+	for each (int arrivalValue in parsedArrivalValues) {
+		// Set the process ID in the first column
+		SRTFDataGrid->Rows[i]->Cells["Process"]->Value = processID;
+
+		// Set the arrival time in the second column
+		SRTFDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = arrivalValue;
+
+		// Set the burst time in the third column
+		SRTFDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstValues[i];
+
+		++i;
+		++processID;
+	}
+}
 };
 }
 #endif

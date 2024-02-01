@@ -385,8 +385,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	SJFDataGrid->RowCount = parsedArrivalValues.size();
 	SJFDataGrid->ColumnCount = 3; // Set ColumnCount to 3 for process ID, arrival time, and burst time
 
-
-
 	// Create columns explicitly and set headers
 	SJFDataGrid->Columns->Add("Process", "Process");
 	SJFDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
