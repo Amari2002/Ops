@@ -381,35 +381,83 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		return;
 	}
 
-	// Use the parsed values to set up the SJFDataGrid
 	SJFDataGrid->RowCount = parsedArrivalValues.size();
-	SJFDataGrid->ColumnCount = 3; // Set ColumnCount to 3 for process ID, arrival time, and burst time
+	SJFDataGrid->ColumnCount = 6; // Set ColumnCount to 6 for process ID, arrival time, burst time, completion time, turnaround time, and waiting time
 
 	// Create columns explicitly and set headers
 	SJFDataGrid->Columns->Add("Process", "Process");
 	SJFDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
-	SJFDataGrid->Columns->Add("BurstTime", "Burst Time"); // Add column for Burst Time
+	SJFDataGrid->Columns->Add("BurstTime", "Burst Time");
+	SJFDataGrid->Columns->Add("CompletionTime", "Completion Time");
+	SJFDataGrid->Columns->Add("TurnaroundTime", "Turnaround Time");
+	SJFDataGrid->Columns->Add("WaitingTime", "Waiting Time");
 
 	// Set the display order of the columns
 	SJFDataGrid->Columns["Process"]->DisplayIndex = 0;
 	SJFDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
-	SJFDataGrid->Columns["BurstTime"]->DisplayIndex = 2; // Set "BurstTime" column to be the third column
+	SJFDataGrid->Columns["BurstTime"]->DisplayIndex = 2;
+	SJFDataGrid->Columns["CompletionTime"]->DisplayIndex = 3;
+	SJFDataGrid->Columns["TurnaroundTime"]->DisplayIndex = 4;
+	SJFDataGrid->Columns["WaitingTime"]->DisplayIndex = 5;
 
-	// Populate the cells with parsed values for both arrival time and burst time
-	int i = 0;
-	int processID = 1;
-	for each (int arrivalValue in parsedArrivalValues) {
-		// Set the process ID in the first column
-		SJFDataGrid->Rows[i]->Cells["Process"]->Value = processID;
+	// Call a separate member function to perform SJF algorithm
+	SJFScheduling(parsedArrivalValues, parsedBurstValues);
 
-		// Set the arrival time in the second column
-		SJFDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = arrivalValue;
+}
 
-		// Set the burst time in the third column
-		SJFDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstValues[i];
+	   // Define a separate member function for SJF algorithm
+private: void SJFScheduling(cliext::list<int> arrivalValues, cliext::list<int> burstValues) {
+	int time = 0;  // Variable to keep track of completion time
+	int totalTime = 0;  // Variable to store the total time for idle time calculation
 
-		++i;
-		++processID;
+	// Vector for process inputs that will be pushed to the processes vector
+	std::vector<Process> processes;
+
+	// Use iterators to traverse through the cliext::list<int>
+	cliext::list<int>::iterator arrivalIter = arrivalValues.begin();
+	cliext::list<int>::iterator burstIter = burstValues.begin();
+
+	// Parse the input and create Process objects
+	while (arrivalIter != arrivalValues.end() && burstIter != burstValues.end()) {
+		Process p;
+		p.id = processes.size() + 1;  // ID is based on the number of processes already added
+		p.at = *arrivalIter;
+		p.bt = *burstIter;
+		processes.push_back(p);
+
+		// Move to the next element in the lists
+		++arrivalIter;
+		++burstIter;
+	}
+
+	// SJF algorithm
+	for (int i = 0; i < processes.size(); ++i) {
+		int burstTime = processes[i].bt;
+
+		// Calculate completion time
+		time += burstTime;
+
+		// Update DataGridView cell values
+		SJFDataGrid->Rows[i]->Cells["Process"]->Value = processes[i].id;
+		SJFDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = processes[i].at;
+		SJFDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstTime;
+		SJFDataGrid->Rows[i]->Cells["CompletionTime"]->Value = time;
+		SJFDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = time - processes[i].at;
+		SJFDataGrid->Rows[i]->Cells["WaitingTime"]->Value = Convert::ToInt32(SJFDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value) - processes[i].bt;
+
+		totalTime += burstTime;
+	}
+
+	// Add an extra row for idle time if needed
+	if (totalTime < time) {
+		SJFDataGrid->RowCount++;
+		int newRow = SJFDataGrid->RowCount - 1;
+		SJFDataGrid->Rows[newRow]->Cells["Process"]->Value = processes.size() + 1;
+		SJFDataGrid->Rows[newRow]->Cells["ArrivalTime"]->Value = time;
+		SJFDataGrid->Rows[newRow]->Cells["BurstTime"]->Value = 0;
+		SJFDataGrid->Rows[newRow]->Cells["CompletionTime"]->Value = time;
+		SJFDataGrid->Rows[newRow]->Cells["TurnaroundTime"]->Value = 0;
+		SJFDataGrid->Rows[newRow]->Cells["WaitingTime"]->Value = 0;
 	}
 }
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
