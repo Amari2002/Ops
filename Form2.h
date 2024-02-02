@@ -5,6 +5,7 @@
 #include "SJF.h"
 #include "FCFS.h"
 #include "NPP.h"
+#include "PP.h"
 namespace Ops {
 	
 	
@@ -22,6 +23,8 @@ namespace Ops {
 	{
 	public:
 		Form^ Form2View;
+	private: System::Windows::Forms::Button^ button5;
+	public:
 	public:
 		Form^ form;
 		Form2(void)
@@ -67,7 +70,7 @@ namespace Ops {
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::PictureBox^ pictureBox6;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Button^ button2;
+
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ button4;
@@ -100,10 +103,10 @@ namespace Ops {
 			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
@@ -263,20 +266,6 @@ namespace Ops {
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label2->Click += gcnew System::EventHandler(this, &Form2::label2_Click_1);
 			// 
-			// button2
-			// 
-			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(108, 289);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(241, 46);
-			this->button2->TabIndex = 28;
-			this->button2->Text = L"SJF";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &Form2::button2_Click);
-			// 
 			// button3
 			// 
 			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::Black;
@@ -320,16 +309,30 @@ namespace Ops {
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &Form2::button4_Click);
 			// 
+			// button5
+			// 
+			this->button5->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->button5->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button5->Location = System::Drawing::Point(98, 289);
+			this->button5->Margin = System::Windows::Forms::Padding(2);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(241, 46);
+			this->button5->TabIndex = 32;
+			this->button5->Text = L"PP";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &Form2::button5_Click);
+			// 
 			// Form2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(704, 496);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->pictureBox6);
 			this->Controls->Add(this->pictureBox5);
@@ -405,6 +408,11 @@ private: System::Void label2_Click_1(System::Object^ sender, System::EventArgs^ 
 private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	NPP^ frm2 = gcnew NPP(this);
 	frm2->Show();
+	Hide();
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	PP^ frm3 = gcnew PP(this);
+	frm3->Show();
 	Hide();
 }
 };

@@ -123,6 +123,7 @@
     <ClCompile Include="Form2.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="NPP.cpp" />
+    <ClCompile Include="PP.cpp" />
     <ClCompile Include="SJF.cpp" />
     <ClCompile Include="FCFS.cpp" />
     <ClCompile Include="Welcome.cpp" />
@@ -136,6 +137,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="NPP.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PP.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SJF.h">
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NPP.resx">
       <DependentUpon>NPP.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PP.resx">
+      <DependentUpon>PP.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SJF.resx">
       <DependentUpon>SJF.h</DependentUpon>
