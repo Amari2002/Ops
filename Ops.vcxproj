@@ -124,7 +124,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="NPP.cpp" />
     <ClCompile Include="SJF.cpp" />
-    <ClCompile Include="SRTF.cpp" />
+    <ClCompile Include="FCFS.cpp" />
     <ClCompile Include="Welcome.cpp" />
     <ClCompile Include="Output.cpp" />
   </ItemGroup>
@@ -141,7 +141,7 @@
     <ClInclude Include="SJF.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="SRTF.h">
+    <ClInclude Include="FCFS.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Welcome.h">
@@ -164,8 +164,8 @@
     <EmbeddedResource Include="SJF.resx">
       <DependentUpon>SJF.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SRTF.resx">
-      <DependentUpon>SRTF.h</DependentUpon>
+    <EmbeddedResource Include="FCFS.resx">
+      <DependentUpon>FCFS.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.h</DependentUpon>

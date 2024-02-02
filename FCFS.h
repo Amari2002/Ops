@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SRTF_H
-#define SRTF_H
+#ifndef FCFS_H
+#define FCFS_H
 
 #include <vector>
 #include <string>
@@ -20,22 +20,22 @@ namespace Ops {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for SRTF
+	/// Summary for FCFS
 	/// </summary>
-	public ref class SRTF : public System::Windows::Forms::Form
+	public ref class FCFS : public System::Windows::Forms::Form
 	{
 	public:
-		Form^ SRTFView;
+		Form^ FCFSView;
 	public:
-		SRTF(void)
+		FCFS(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
 		}
-		SRTF(Form^ SRTFViewParam) {
-			SRTFView = SRTFViewParam;
+		FCFS(Form^ FCFSViewParam) {
+			FCFSView = FCFSViewParam;
 			InitializeComponent();
 		}
 
@@ -43,7 +43,7 @@ namespace Ops {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~SRTF()
+		~FCFS()
 		{
 			if (components)
 			{
@@ -64,7 +64,7 @@ namespace Ops {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::DataGridView^ SRTFDataGrid;
+	private: System::Windows::Forms::DataGridView^ FCFSDataGrid;
 
 	private:
 		/// <summary>
@@ -79,7 +79,7 @@ namespace Ops {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SRTF::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FCFS::typeid));
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->textBoxBurstTime = (gcnew System::Windows::Forms::TextBox());
@@ -92,10 +92,10 @@ namespace Ops {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->SRTFDataGrid = (gcnew System::Windows::Forms::DataGridView());
+			this->FCFSDataGrid = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SRTFDataGrid))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->FCFSDataGrid))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label5
@@ -123,7 +123,7 @@ namespace Ops {
 			this->button4->Size = System::Drawing::Size(54, 39);
 			this->button4->TabIndex = 72;
 			this->button4->UseVisualStyleBackColor = false;
-			this->button4->Click += gcnew System::EventHandler(this, &SRTF::button4_Click);
+			this->button4->Click += gcnew System::EventHandler(this, &FCFS::button4_Click);
 			// 
 			// textBoxBurstTime
 			// 
@@ -159,7 +159,7 @@ namespace Ops {
 			this->button1->TabIndex = 69;
 			this->button1->Text = L"COMPUTE";
 			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &SRTF::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &FCFS::button1_Click);
 			// 
 			// label6
 			// 
@@ -209,9 +209,9 @@ namespace Ops {
 			this->label3->Location = System::Drawing::Point(19, 188);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(90, 32);
+			this->label3->Size = System::Drawing::Size(88, 32);
 			this->label3->TabIndex = 65;
-			this->label3->Text = L"STRF";
+			this->label3->Text = L"FCFS";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label4
@@ -246,22 +246,22 @@ namespace Ops {
 			this->pictureBox1->TabIndex = 62;
 			this->pictureBox1->TabStop = false;
 			// 
-			// SRTFDataGrid
+			// FCFSDataGrid
 			// 
-			this->SRTFDataGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->SRTFDataGrid->Location = System::Drawing::Point(33, 589);
-			this->SRTFDataGrid->Name = L"SRTFDataGrid";
-			this->SRTFDataGrid->Size = System::Drawing::Size(668, 276);
-			this->SRTFDataGrid->TabIndex = 74;
-			this->SRTFDataGrid->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SRTF::SRTFDataGrid_CellContentClick);
+			this->FCFSDataGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->FCFSDataGrid->Location = System::Drawing::Point(33, 589);
+			this->FCFSDataGrid->Name = L"FCFSDataGrid";
+			this->FCFSDataGrid->Size = System::Drawing::Size(668, 276);
+			this->FCFSDataGrid->TabIndex = 74;
+			this->FCFSDataGrid->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &FCFS::FCFSDataGrid_CellContentClick);
 			// 
-			// SRTF
+			// FCFS
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->ClientSize = System::Drawing::Size(739, 498);
-			this->Controls->Add(this->SRTFDataGrid);
+			this->Controls->Add(this->FCFSDataGrid);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->textBoxBurstTime);
@@ -274,11 +274,11 @@ namespace Ops {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->pictureBox1);
-			this->Name = L"SRTF";
-			this->Text = L"SRTF";
+			this->Name = L"FCFS";
+			this->Text = L"FCFS";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SRTFDataGrid))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->FCFSDataGrid))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -287,9 +287,9 @@ namespace Ops {
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		Close();
-		SRTFView->Show();
+		FCFSView->Show();
 	}
-private: System::Void SRTFDataGrid_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+private: System::Void FCFSDataGrid_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ ar = textBoxArrivalTime->Text;
@@ -331,35 +331,61 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		return;
 	}
 
-	// Use the parsed values to set up the SJFDataGrid
-	SRTFDataGrid->RowCount = parsedArrivalValues.size();
-	SRTFDataGrid->ColumnCount = 3; // Set ColumnCount to 3 for process ID, arrival time, and burst time
+	// Use the parsed values to set up the FCFSDataGrid
+	FCFSDataGrid->RowCount = parsedArrivalValues.size();
+	FCFSDataGrid->ColumnCount = 6; // Set ColumnCount to 6 for process ID, arrival time, burst time, completion time, turnaround time, and waiting time
 
 	// Create columns explicitly and set headers
-	SRTFDataGrid->Columns->Add("Process", "Process");
-	SRTFDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
-	SRTFDataGrid->Columns->Add("BurstTime", "Burst Time"); // Add column for Burst Time
+	FCFSDataGrid->Columns->Add("Process", "Process");
+	FCFSDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
+	FCFSDataGrid->Columns->Add("BurstTime", "Burst Time");
+	FCFSDataGrid->Columns->Add("CompletionTime", "Completion Time"); // Add column for Completion Time
+	FCFSDataGrid->Columns->Add("TurnaroundTime", "Turnaround Time"); // Add column for Turnaround Time
+	FCFSDataGrid->Columns->Add("WaitingTime", "Waiting Time"); // Add column for Waiting Time
 
 	// Set the display order of the columns
-	SRTFDataGrid->Columns["Process"]->DisplayIndex = 0;
-	SRTFDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
-	SRTFDataGrid->Columns["BurstTime"]->DisplayIndex = 2; // Set "BurstTime" column to be the third column
+	FCFSDataGrid->Columns["Process"]->DisplayIndex = 0;
+	FCFSDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
+	FCFSDataGrid->Columns["BurstTime"]->DisplayIndex = 2;
+	FCFSDataGrid->Columns["CompletionTime"]->DisplayIndex = 3; // Set "CompletionTime" column to be the fourth column
+	FCFSDataGrid->Columns["TurnaroundTime"]->DisplayIndex = 4; // Set "TurnaroundTime" column to be the fifth column
+	FCFSDataGrid->Columns["WaitingTime"]->DisplayIndex = 5; // Set "WaitingTime" column to be the sixth column
 
-	// Populate the cells with parsed values for both arrival time and burst time
-	int i = 0;
+	// Perform FCFS scheduling to calculate completion time, turnaround time, and waiting time
+	int currentTime = 0;
 	int processID = 1;
-	for each (int arrivalValue in parsedArrivalValues) {
-		// Set the process ID in the first column
-		SRTFDataGrid->Rows[i]->Cells["Process"]->Value = processID;
+	cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
+	cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
 
-		// Set the arrival time in the second column
-		SRTFDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = arrivalValue;
+	for (int i = 0; i < parsedArrivalValues.size(); ++i) {
+		int arrivalTime = *arrivalIterator;
+		int burstTime = *burstIterator;
+		// Update the "Process" column
+		FCFSDataGrid->Rows[i]->Cells["Process"]->Value = processID;
 
-		// Set the burst time in the third column
-		SRTFDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstValues[i];
+		// Update the "Arrival Time" column
+		FCFSDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = arrivalTime;
 
-		++i;
+		// Update the "Burst Time" column
+		FCFSDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstTime;
+		// Update Completion Time
+		int completionTime = Math::Max(currentTime, arrivalTime) + burstTime;
+		FCFSDataGrid->Rows[i]->Cells["CompletionTime"]->Value = completionTime;
+
+		// Update Turnaround Time
+		int turnaroundTime = completionTime - arrivalTime;
+		FCFSDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = turnaroundTime;
+
+		// Update Waiting Time
+		int waitingTime = turnaroundTime - burstTime;
+		FCFSDataGrid->Rows[i]->Cells["WaitingTime"]->Value = waitingTime;
+
+		// Move to the next process
+		currentTime = completionTime;
 		++processID;
+		++arrivalIterator;
+		++burstIterator;
+	
 	}
 }
 };

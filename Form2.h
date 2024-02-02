@@ -3,7 +3,7 @@
 #define FORM2_H
 
 #include "SJF.h"
-#include "SRTF.h"
+#include "FCFS.h"
 #include "NPP.h"
 namespace Ops {
 	
@@ -169,12 +169,12 @@ namespace Ops {
 			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(98, 297);
+			this->button1->Location = System::Drawing::Point(378, 289);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(241, 46);
 			this->button1->TabIndex = 15;
-			this->button1->Text = L"SRTF";
+			this->button1->Text = L"FCFS";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form2::button1_Click);
 			// 
@@ -268,7 +268,7 @@ namespace Ops {
 			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(379, 297);
+			this->button2->Location = System::Drawing::Point(108, 289);
 			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(241, 46);
@@ -382,7 +382,7 @@ private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	SRTF^ frm3 = gcnew SRTF(this);
+	FCFS^ frm3 = gcnew FCFS(this);
 	frm3->Show();
 	Hide();
 }
