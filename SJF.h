@@ -405,6 +405,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 }
 
+	   // Define a separate comparison function outside the class
+private:
+	// Define a static member function for comparison
+	static bool CompareProcesses(const Process& a, const Process& b) {
+		return a.at < b.at || (a.at == b.at && a.id < b.id);
+	}
 	   // Define a separate member function for SJF algorithm
 private: void SJFScheduling(cliext::list<int> arrivalValues, cliext::list<int> burstValues) {
 	int time = 0;  // Variable to keep track of completion time
@@ -430,25 +436,38 @@ private: void SJFScheduling(cliext::list<int> arrivalValues, cliext::list<int> b
 		++burstIter;
 	}
 
+	// Sorting processes based on arrival time and ID
+	std::sort(processes.begin(), processes.end(), CompareProcesses);
+
 	// SJF algorithm
-	for (int i = 0; i < processes.size(); ++i) {
+	for (size_t i = 0; i < processes.size(); ++i) {
 		int burstTime = processes[i].bt;
 
 		// Calculate completion time
 		time += burstTime;
 
+		// Update process completion time
+		processes[i].cp = time;
+
+		// Calculate turnaround time and waiting time
+		processes[i].tt = processes[i].cp - processes[i].at;
+		processes[i].wt = processes[i].tt - processes[i].bt;
+
+		processes[i].tt = (processes[i].tt < 0) ? 0 : processes[i].tt;
+		processes[i].wt = (processes[i].wt < 0) ? 0 : processes[i].wt;
+
 		// Update DataGridView cell values
 		SJFDataGrid->Rows[i]->Cells["Process"]->Value = processes[i].id;
 		SJFDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = processes[i].at;
 		SJFDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstTime;
-		SJFDataGrid->Rows[i]->Cells["CompletionTime"]->Value = time;
-		SJFDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = time - processes[i].at;
-		SJFDataGrid->Rows[i]->Cells["WaitingTime"]->Value = Convert::ToInt32(SJFDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value) - processes[i].bt;
+		SJFDataGrid->Rows[i]->Cells["CompletionTime"]->Value = processes[i].cp;
+		SJFDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = processes[i].tt;
+		SJFDataGrid->Rows[i]->Cells["WaitingTime"]->Value = processes[i].wt;
 
 		totalTime += burstTime;
 	}
 
-	// Add an extra row for idle time if needed
+	// Add an extra row for idle time if needed (similar to the console code)
 	if (totalTime < time) {
 		SJFDataGrid->RowCount++;
 		int newRow = SJFDataGrid->RowCount - 1;

@@ -26,6 +26,9 @@ namespace Ops {
 	public:
 		Form^ NPPView;
 	private: System::Windows::Forms::DataGridView^ NPPDataGrid;
+	private: System::Windows::Forms::TextBox^ textBoxPriority;
+
+	private: System::Windows::Forms::Label^ label7;
 	public:
 	public:
 		Form^ form2;
@@ -98,6 +101,8 @@ namespace Ops {
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->NPPDataGrid = (gcnew System::Windows::Forms::DataGridView());
+			this->textBoxPriority = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPPDataGrid))->BeginInit();
@@ -109,7 +114,7 @@ namespace Ops {
 			this->label5->BackColor = System::Drawing::Color::Khaki;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Impact", 24.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(30, 531);
+			this->label5->Location = System::Drawing::Point(20, 590);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(107, 41);
 			this->label5->TabIndex = 86;
@@ -122,7 +127,7 @@ namespace Ops {
 			this->button4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button4->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->button4->Location = System::Drawing::Point(23, 140);
+			this->button4->Location = System::Drawing::Point(23, 132);
 			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(54, 39);
@@ -134,7 +139,7 @@ namespace Ops {
 			// 
 			this->textBoxBurstTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBoxBurstTime->Location = System::Drawing::Point(155, 356);
+			this->textBoxBurstTime->Location = System::Drawing::Point(155, 348);
 			this->textBoxBurstTime->MaxLength = 23;
 			this->textBoxBurstTime->Multiline = true;
 			this->textBoxBurstTime->Name = L"textBoxBurstTime";
@@ -145,7 +150,7 @@ namespace Ops {
 			// 
 			this->textBoxArrivalTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBoxArrivalTime->Location = System::Drawing::Point(155, 237);
+			this->textBoxArrivalTime->Location = System::Drawing::Point(155, 229);
 			this->textBoxArrivalTime->MaxLength = 23;
 			this->textBoxArrivalTime->Multiline = true;
 			this->textBoxArrivalTime->Name = L"textBoxArrivalTime";
@@ -157,7 +162,7 @@ namespace Ops {
 			this->button1->BackColor = System::Drawing::Color::DodgerBlue;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(314, 430);
+			this->button1->Location = System::Drawing::Point(288, 547);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(117, 33);
@@ -171,7 +176,7 @@ namespace Ops {
 			this->label6->BackColor = System::Drawing::Color::Aquamarine;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Impact", 25.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(534, 140);
+			this->label6->Location = System::Drawing::Point(534, 132);
 			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(160, 51);
@@ -185,7 +190,7 @@ namespace Ops {
 			this->label2->BackColor = System::Drawing::Color::SandyBrown;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 50, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(9, 18);
+			this->label2->Location = System::Drawing::Point(9, 10);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(560, 81);
@@ -197,7 +202,7 @@ namespace Ops {
 			// 
 			this->label1->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(224, 304);
+			this->label1->Location = System::Drawing::Point(224, 296);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(277, 38);
@@ -211,7 +216,7 @@ namespace Ops {
 			this->label3->BackColor = System::Drawing::Color::Khaki;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(17, 186);
+			this->label3->Location = System::Drawing::Point(17, 178);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(70, 32);
@@ -223,7 +228,7 @@ namespace Ops {
 			// 
 			this->label4->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(224, 186);
+			this->label4->Location = System::Drawing::Point(224, 178);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(277, 38);
@@ -234,17 +239,17 @@ namespace Ops {
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Khaki;
-			this->pictureBox3->Location = System::Drawing::Point(11, 128);
+			this->pictureBox3->Location = System::Drawing::Point(11, 120);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(704, 736);
+			this->pictureBox3->Size = System::Drawing::Size(704, 798);
 			this->pictureBox3->TabIndex = 76;
 			this->pictureBox3->TabStop = false;
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::SandyBrown;
-			this->pictureBox1->Location = System::Drawing::Point(-2, 9);
+			this->pictureBox1->Location = System::Drawing::Point(-2, 1);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(740, 102);
@@ -254,17 +259,44 @@ namespace Ops {
 			// NPPDataGrid
 			// 
 			this->NPPDataGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->NPPDataGrid->Location = System::Drawing::Point(28, 575);
+			this->NPPDataGrid->Location = System::Drawing::Point(27, 634);
 			this->NPPDataGrid->Name = L"NPPDataGrid";
 			this->NPPDataGrid->Size = System::Drawing::Size(658, 256);
 			this->NPPDataGrid->TabIndex = 87;
+			this->NPPDataGrid->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &NPP::NPPDataGrid_CellContentClick);
+			// 
+			// textBoxPriority
+			// 
+			this->textBoxPriority->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBoxPriority->Location = System::Drawing::Point(155, 470);
+			this->textBoxPriority->MaxLength = 23;
+			this->textBoxPriority->Multiline = true;
+			this->textBoxPriority->Name = L"textBoxPriority";
+			this->textBoxPriority->Size = System::Drawing::Size(430, 51);
+			this->textBoxPriority->TabIndex = 88;
+			this->textBoxPriority->TextChanged += gcnew System::EventHandler(this, &NPP::textBoxPriority_TextChanged);
+			// 
+			// label7
+			// 
+			this->label7->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(224, 419);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(277, 38);
+			this->label7->TabIndex = 89;
+			this->label7->Text = L"Priority";
+			this->label7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// NPP
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(739, 498);
+			this->ClientSize = System::Drawing::Size(739, 691);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->textBoxPriority);
 			this->Controls->Add(this->NPPDataGrid);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->button4);
@@ -295,10 +327,12 @@ namespace Ops {
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ ar = textBoxArrivalTime->Text;
 	String^ br = textBoxBurstTime->Text;
+	String^ pr = textBoxPriority->Text; // Assuming textBoxPriority is the name of your priority input textbox
 
-	// Split the input into individual values for arrival time and burst time
+	// Split the input into individual values for arrival time, burst time, and priority
 	array<String^>^ arrivalValues = ar->Split(' ');
 	array<String^>^ burstValues = br->Split(' ');
+	array<String^>^ priorityValues = pr->Split(' '); // Split the priority input
 
 	// Validate and parse each value for arrival time
 	cliext::list<int> parsedArrivalValues;
@@ -326,27 +360,42 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 	}
 
-	// Check if the number of parsed values for arrival time and burst time match
-	if (parsedArrivalValues.size() != parsedBurstValues.size()) {
-		MessageBox::Show("Number of values for arrival time and burst time must be the same.", "Error");
+	// Validate and parse each value for priority
+	cliext::list<int> parsedPriorityValues;
+	for each (String ^ value in priorityValues) {
+		int parsedValue;
+		if (Int32::TryParse(value, parsedValue)) {
+			parsedPriorityValues.push_back(parsedValue);
+		}
+		else {
+			MessageBox::Show("Invalid input for priority. Please enter valid numeric values separated by space.", "Error");
+			return;
+		}
+	}
+
+	// Check if the number of parsed values for arrival time, burst time, and priority match
+	if (parsedArrivalValues.size() != parsedBurstValues.size() || parsedArrivalValues.size() != parsedPriorityValues.size()) {
+		MessageBox::Show("Number of values for arrival time, burst time, and priority must be the same.", "Error");
 		return;
 	}
 
 	// Use the parsed values to set up the SJFDataGrid
 	NPPDataGrid->RowCount = parsedArrivalValues.size();
-	NPPDataGrid->ColumnCount = 3; // Set ColumnCount to 3 for process ID, arrival time, and burst time
+	NPPDataGrid->ColumnCount = 4; // Set ColumnCount to 4 for process ID, arrival time, burst time, and priority
 
 	// Create columns explicitly and set headers
 	NPPDataGrid->Columns->Add("Process", "Process");
 	NPPDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
-	NPPDataGrid->Columns->Add("BurstTime", "Burst Time"); // Add column for Burst Time
+	NPPDataGrid->Columns->Add("BurstTime", "Burst Time");
+	NPPDataGrid->Columns->Add("Priority", "Priority"); // Add column for Priority
 
 	// Set the display order of the columns
 	NPPDataGrid->Columns["Process"]->DisplayIndex = 0;
 	NPPDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
-	NPPDataGrid->Columns["BurstTime"]->DisplayIndex = 2; // Set "BurstTime" column to be the third column
+	NPPDataGrid->Columns["BurstTime"]->DisplayIndex = 2;
+	NPPDataGrid->Columns["Priority"]->DisplayIndex = 3; // Set "Priority" column to be the fourth column
 
-	// Populate the cells with parsed values for both arrival time and burst time
+	// Populate the cells with parsed values for arrival time, burst time, and priority
 	int i = 0;
 	int processID = 1;
 	for each (int arrivalValue in parsedArrivalValues) {
@@ -359,9 +408,16 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		// Set the burst time in the third column
 		NPPDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstValues[i];
 
+		// Set the priority in the fourth column
+		NPPDataGrid->Rows[i]->Cells["Priority"]->Value = priorityValues[i];
+
 		++i;
 		++processID;
 	}
+}
+private: System::Void NPPDataGrid_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void textBoxPriority_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
