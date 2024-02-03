@@ -440,7 +440,7 @@ private: void SJFScheduling(cliext::list<int> arrivalValues, cliext::list<int> b
 	std::sort(processes.begin(), processes.end(), CompareProcesses);
 
 	// SJF algorithm
-	for (size_t i = 0; i < processes.size(); ++i) {
+	for (int i = 0; i < processes.size(); ++i) {
 		int burstTime = processes[i].bt;
 
 		// Calculate completion time
