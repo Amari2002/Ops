@@ -386,6 +386,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Please enter valid numeric values for arrival, burst, and priority.", "Error");
 		return;
 	}
+	/*
 	int time_sum = 0;
 	std::vector<NPPProcess> processes;
 	// Perform the NPP algorithm logic here
@@ -402,7 +403,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	// Display the output in the DataGridView
 	NPPDataGrid->RowCount = arrivalVector.size();
 	NPPDataGrid->ColumnCount = 7; // Set ColumnCount for process details
-
+	*/
 	// Set column headers
 	NPPDataGrid->Columns->Add("ID", "ID");
 	NPPDataGrid->Columns->Add("AT", "Arrival Time");
@@ -431,15 +432,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		// Completion Time calculation
 		completionTime += burstVector[i] + 1;
-		NPPDataGrid->Rows[i]->Cells["CT"]->Value = results[i].cp;
+		NPPDataGrid->Rows[i]->Cells["CT"]->Value = completionTime;
 
 		// Turnaround Time calculation
 		int turnaroundTime = completionTime - arrivalVector[i];
-		NPPDataGrid->Rows[i]->Cells["TT"]->Value = results[i].tt;
+		NPPDataGrid->Rows[i]->Cells["TT"]->Value = turnaroundTime;
 
 		// Waiting Time calculation
 		int waitingTime = turnaroundTime - burstVector[i];
-		NPPDataGrid->Rows[i]->Cells["WT"]->Value = results[i].wt;
+		NPPDataGrid->Rows[i]->Cells["WT"]->Value = waitingTime;
 
 	
 	}

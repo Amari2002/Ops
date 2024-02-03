@@ -1,11 +1,16 @@
 #pragma once
-
+/*
 #include<iostream>
 #include<vector>
 #include<string>
 #include<sstream>
 #include<utility>
 #include<algorithm>
+#include <cliext/list>
+
+bool sorting(const NPPProcess& a, const NPPProcess& b) {
+    return a.at < b.at || (a.at == b.at && a.id < b.id);
+}
 
 // Time_process to monitor the processing time of each process
 // mainly to get the specific second/millisecond which they being processed
@@ -37,6 +42,7 @@ struct NPPProcess {
         this->wt = this->tt - this->bt;
     }
 };
+/*
 // Main function
 std::vector<NPPProcess> comp(std::vector<NPPProcess> processes, int time_sum) {
     // vector to get the completion time and original index of the process, it is pair since
@@ -105,3 +111,4 @@ std::vector<NPPProcess> comp(std::vector<NPPProcess> processes, int time_sum) {
     }
     return processes;
 }
+*/

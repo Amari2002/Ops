@@ -315,7 +315,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 	}
 	// Sort the parsed arrival time values
-	parsedArrivalValues.sort();
+	//parsedArrivalValues.sort();
 	// Validate and parse each value for burst time
 	cliext::list<int> parsedBurstValues;
 	for each (String ^ value in burstValues) {
@@ -328,15 +328,34 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			return;
 		}
 	}
-
-
+	std::vector<std::pair<int, std::pair<int, int>>> pro;
 
 	// Check if the number of parsed values for arrival time and burst time match
 	if (parsedArrivalValues.size() != parsedBurstValues.size()) {
 		MessageBox::Show("Number of values for arrival time and burst time must be the same.", "Error");
 		return;
 	}
-
+	cliext::list<int>::iterator ArrivalIterator = parsedArrivalValues.begin();
+	cliext::list<int>::iterator BurstIterator = parsedBurstValues.begin();
+	for (int i = 0; i < parsedArrivalValues.size(); i++) {
+		std::pair<int, std::pair<int, int>> pairs;
+		pairs.first = i + 1;
+		pairs.second.first = *ArrivalIterator;
+		pairs.second.second = *BurstIterator;
+		pro.push_back(pairs);
+		++ArrivalIterator;
+		++BurstIterator;
+	}
+	for (int i = 0; i < pro.size(); i++) {
+		for (int j = 0; j < pro.size() - 1; j++) {
+			std::pair<int, std::pair<int, int>> tp;
+			if (pro[j].second.first > pro[j + 1].second.first || (pro[j].second.first == pro[j + 1].second.first && pro[j].first > pro[j + 1].first)) {
+				tp = pro[j];
+				pro[j] = pro[j + 1];
+				pro[j + 1] = tp;
+			}
+		}
+	}
 	// Use the parsed values to set up the FCFSDataGrid
 	FCFSDataGrid->RowCount = parsedArrivalValues.size();
 	FCFSDataGrid->ColumnCount = 6; // Set ColumnCount to 6 for process ID, arrival time, burst time, completion time, turnaround time, and waiting time
@@ -361,39 +380,39 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	int currentTime = 0;
 	int processID = 1;
 
-	cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
-	cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
+	//cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
+	//cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
 
-	for (int i = 0; i < parsedArrivalValues.size(); ++i) {
-		int arrivalTime = *arrivalIterator;
-		int burstTime = *burstIterator;
+	for (int i = 0; i < pro.size(); ++i) {
+		//int arrivalTime = *arrivalIterator;
+		//int burstTime = *burstIterator;
 
 		// Update the "Process" column
-		FCFSDataGrid->Rows[i]->Cells["Process"]->Value = processID;
+		FCFSDataGrid->Rows[i]->Cells["Process"]->Value = pro[i].first;
 
 		// Update the "Arrival Time" column
-		FCFSDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = arrivalTime;
+		FCFSDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = pro[i].second.first;
 
 		// Update the "Burst Time" column
-		FCFSDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstTime;
+		FCFSDataGrid->Rows[i]->Cells["BurstTime"]->Value = pro[i].second.second;
 		// Update Completion Time
-		int completionTime = Math::Max(currentTime, arrivalTime) + burstTime;
+		int completionTime = Math::Max(currentTime, pro[i].second.first) + pro[i].second.second;
 		FCFSDataGrid->Rows[i]->Cells["CompletionTime"]->Value = completionTime;
 
 		// Update Turnaround Time
-		int turnaroundTime = completionTime - arrivalTime;
+		int turnaroundTime = completionTime - pro[i].second.first;
 		FCFSDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = turnaroundTime;
 
 		// Update Waiting Time
-		int waitingTime = turnaroundTime - burstTime;
+		int waitingTime = turnaroundTime - pro[i].second.second;
 		FCFSDataGrid->Rows[i]->Cells["WaitingTime"]->Value = waitingTime;
 
 		// Move to the next process
 		currentTime = completionTime;
 		++processID;
 
-		++arrivalIterator;
-		++burstIterator;
+		//++arrivalIterator;
+		//++burstIterator;
 
 	}
 }};
