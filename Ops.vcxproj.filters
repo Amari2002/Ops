@@ -36,9 +36,6 @@
     <ClCompile Include="PP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NPP_algo.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Welcome.h">

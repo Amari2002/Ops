@@ -9,7 +9,36 @@
 #include<stdlib.h>
 #include <stdexcept>
 #include <cliext/list>
-#include "NPP_algo.h"
+#include <iostream>
+
+struct Time_process {
+	unsigned p_id = 0;
+	std::pair<unsigned, unsigned> time;
+};
+/*
+	Process structure, this is where the attributes of each process is stored
+	id = process id number
+	at = arrival time
+	bt = burst time
+	pr = priority
+	cp = completion time
+	tt = turnaround time
+	wt = waiting time
+*/
+struct NPPProcess {
+	unsigned id = 0;
+	unsigned at = 0;
+	unsigned bt = 0;
+	unsigned pr = 0;
+	unsigned cp = 0;
+	unsigned tt = 0;
+	unsigned wt = 0;
+	void TTWT(const unsigned& completion_time) {
+		this->cp = completion_time;
+		this->tt = this->cp - this->at;
+		this->wt = this->tt - this->bt;
+	}
+};
 namespace Ops {
 
 	using namespace System;
@@ -386,11 +415,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Please enter valid numeric values for arrival, burst, and priority.", "Error");
 		return;
 	}
-	/*
-	int time_sum = 0;
+	
+	int time_sum = 0, time = 0, j = 0;
 	std::vector<NPPProcess> processes;
 	// Perform the NPP algorithm logic here
-	for (int i = 0; i < arrivalVector.size(); i++) {
+	for (int i = 0; i < arrivalVector.size() && i < burstVector.size() && i < priorityVector.size(); i++) {
 		NPPProcess p;
 		p.id = i + 1;
 		p.at = arrivalVector[i];
@@ -399,11 +428,88 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		time_sum += p.bt;
 		processes.push_back(p);
 	}
-	std::vector<NPPProcess> results = comp(processes, time_sum);
+	std::vector<std::pair<int, unsigned>> completion;
+	std::vector<std::pair<int, NPPProcess>> queue;
+	std::vector<Time_process> processing_time;
+	for (int i = 0; i < processes.size(); i++) {
+		for (int j = 0; j < processes.size() - 1; j++) {
+			NPPProcess tp;
+			if (processes[j].at > processes[j + 1].at
+				|| (processes[j].at == processes[j + 1].at && processes[j].id > processes[j + 1].id)) {
+				tp = processes[j];
+				processes[j] = processes[j + 1];
+				processes[j + 1] = tp;
+			}
+		}
+	}
+	while (time < time_sum) {
+		// while the arrival time is equal to the current time, it will be pushed to the queue
+		// getting ready for processing
+		while (j < processes.size() && time >= processes[j].at ) {
+			queue.push_back(std::make_pair(j, processes[j]));
+			j++;
+			std::cout << "PR PUSHED TO THE QUEUE" << std::endl;
+		}
+		if (queue.size() > 0) {
+			// Each loop the queue will be sorted according to their priority or arrival time or ID
+			for (int i = 0; i < queue.size(); i++) {
+				for (int j = 0; j < queue.size() - 1; j++) {
+					std::pair<int, NPPProcess> tp;
+					std::cout << "WE ARE SORTING QUEUE" << std::endl;
+					if ((queue[j].second.pr > queue[j + 1].second.pr)
+						|| (queue[j].second.pr == queue[j + 1].second.pr && queue[j].second.at > queue[j + 1].second.at)
+						|| (queue[j].second.pr == queue[j + 1].second.pr && queue[j].second.at == queue[j + 1].second.at && queue[j].first > queue[j + 1].first)) {
+						tp = queue[j];
+						queue[j] = queue[j + 1];
+						queue[j + 1] = tp;
+					}
+				}
+			}
+			std::cout << "QUEUE HAS BEEN SORTED" << std::endl;
+			// taking the process id to monitor their time of process
+			Time_process current_process;
+			current_process.p_id = queue[0].second.id;
+			current_process.time.first = time;
+			// the while loop will decrement the first process in the queue until reaching 0
+			while (queue[0].second.bt > 0) {
+				queue[0].second.bt--;
+				time++;
+			}
+			std::cout << "QUEUE HAS BEEN USED BURST" << std::endl;
+			current_process.time.second = time;
+			processing_time.push_back(current_process);
+			// after the loop, the current time will be stored to the completion vector,
+			// along with the process which is done processing then erase the process to the queue
+			completion.push_back(std::make_pair(queue[0].first, time));
+			queue.erase(queue.begin());
+			std::cout << "QUEUE HAS BEEN ERASED" << std::endl;
+		}
+		else {
+			// Idle time, the excess time will be added to the total time to reach the end time of process
+			time++;
+			time_sum++;
+			std::cout << "IDLE TIME" << std::endl;
+		}
+	}
+	for (int i = 0; i < completion.size(); i++) {
+		for (int j = 0; j < completion.size() - 1; j++) {
+			std::pair<int, unsigned> tp;
+			if (completion[j].first > completion[j + 1].first) {
+				tp = completion[j];
+				completion[j] = completion[j + 1];
+				completion[j + 1] = tp;
+			}
+		}
+		std::cout << "SORTING THE COMPLETION" << std::endl;
+	}
+	for (int i = 0; i < processes.size(); i++) {
+		processes[i].TTWT(completion[i].second);
+		std::cout << "COMPUTING THE TTWT" << std::endl;
+	}
 	// Display the output in the DataGridView
 	NPPDataGrid->RowCount = arrivalVector.size();
 	NPPDataGrid->ColumnCount = 7; // Set ColumnCount for process details
-	*/
+	
 	// Set column headers
 	NPPDataGrid->Columns->Add("ID", "ID");
 	NPPDataGrid->Columns->Add("AT", "Arrival Time");
@@ -424,23 +530,23 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	int completionTime = 0; // Initialize completion time for the first process
 
-	for (int i = 0; i < arrivalVector.size(); i++) {
-		NPPDataGrid->Rows[i]->Cells["ID"]->Value = i + 1;
-		NPPDataGrid->Rows[i]->Cells["AT"]->Value = arrivalVector[i];
-		NPPDataGrid->Rows[i]->Cells["BT"]->Value = burstVector[i];
-		NPPDataGrid->Rows[i]->Cells["PR"]->Value = priorityVector[i];
+	for (int i = 0; i < processes.size(); i++) {
+		NPPDataGrid->Rows[i]->Cells["ID"]->Value = processes[i].id;
+		NPPDataGrid->Rows[i]->Cells["AT"]->Value = processes[i].at;
+		NPPDataGrid->Rows[i]->Cells["BT"]->Value = processes[i].bt;
+		NPPDataGrid->Rows[i]->Cells["PR"]->Value = processes[i].pr;
 
 		// Completion Time calculation
 		completionTime += burstVector[i] + 1;
-		NPPDataGrid->Rows[i]->Cells["CT"]->Value = completionTime;
+		NPPDataGrid->Rows[i]->Cells["CT"]->Value = processes[i].cp;
 
 		// Turnaround Time calculation
 		int turnaroundTime = completionTime - arrivalVector[i];
-		NPPDataGrid->Rows[i]->Cells["TT"]->Value = turnaroundTime;
+		NPPDataGrid->Rows[i]->Cells["TT"]->Value = processes[i].tt;
 
 		// Waiting Time calculation
 		int waitingTime = turnaroundTime - burstVector[i];
-		NPPDataGrid->Rows[i]->Cells["WT"]->Value = waitingTime;
+		NPPDataGrid->Rows[i]->Cells["WT"]->Value = processes[i].wt;
 
 	
 	}
