@@ -23,7 +23,7 @@ struct Time_process {
     tt = turnaround time
     wt = waiting time
 */
-struct Process {
+struct NPPProcess {
     unsigned id = 0;
     unsigned at = 0;
     unsigned bt = 0;
@@ -38,25 +38,24 @@ struct Process {
     }
 };
 // Main function
-void completion(std::vector<Process>& processes) {
+std::vector<NPPProcess> comp(std::vector<NPPProcess> processes, int time_sum) {
     // vector to get the completion time and original index of the process, it is pair since
     // the queue doesn't store the processes by their index
-    std::vector<std::pair<size_t, unsigned>> completion;
+    std::vector<std::pair<int, int>> completion;
     // vector for the ready queue of each process, once the arrival time is met or
     // (time = at) the process will be pushed to the queue according to the Non-preemtive Priority algorithm
     // it will store the original index of each process and their Process structure
-    std::vector<std::pair<size_t, Process>> queue;
+    std::vector<std::pair<int, NPPProcess>> queue;
     // vector to get the starting time and ending time of each process
     std::vector<Time_process> processing_time;
-    unsigned at_num, bt_num, pr_num, time_sum = 0, TT, id_num = 1;
+    int id_num = 1;
     // inputting of arrival time, burst time, and priority
     // checking if the number of arrival time is equal to the number of burst time and their sign
-    int value;
-    size_t size_at = 0, size_bt = 0, size_pr = 0;
-    unsigned time = 0; // time is used to for identifying the current seconds/milliseconds each loop
-    size_t j = 0; // j will be used to traverse the processes vector
+    int size_at = 0, size_bt = 0, size_pr = 0;
+    int time = 0; // time is used to for identifying the current seconds/milliseconds each loop
+    int j = 0; // j will be used to traverse the processes vector
     // sorting the vector by their arrival time, if equal a.at == b.at it will base on id
-    std::sort(processes.begin(), processes.end(), [](const Process& a, const Process& b)
+    std::sort(processes.begin(), processes.end(), [](const NPPProcess& a, const NPPProcess& b)
         { return a.at < b.at || (a.at == b.at && a.id < b.id); });
     // while loop for Non-Preemtive Priority algorithm
     // it is based on time which means it starts by 0 seconds/milliseconds
@@ -70,7 +69,7 @@ void completion(std::vector<Process>& processes) {
         }
         if (!queue.empty()) {
             // Each loop the queue will be sorted according to their priority or arrival time or ID
-            std::sort(queue.begin(), queue.end(), [](const std::pair<size_t, Process>& a, const std::pair<size_t, Process>& b)
+            std::sort(queue.begin(), queue.end(), [](const std::pair<int, NPPProcess>& a, const std::pair<int, NPPProcess>& b)
                 { return (a.second.pr < b.second.pr)
                 || (a.second.pr == b.second.pr && a.second.at < b.second.at)
                 || (a.second.pr == b.second.pr && a.second.at == b.second.at && a.first < b.first); });
@@ -98,10 +97,11 @@ void completion(std::vector<Process>& processes) {
     }
     // after completing the process of decrementation of burst time for each process,
     // the completion vector will be sorted based on the original index of each process ascendingly
-    std::sort(completion.begin(), completion.end(), [](const std::pair<size_t, unsigned>& a, const std::pair<size_t, unsigned>& b)
+    std::sort(completion.begin(), completion.end(), [](const std::pair<int, unsigned>& a, const std::pair<int, unsigned>& b)
         { return a.first < b.first; });
     // for loop to compute for the turnaround time and waiting time for each processes
-    for (size_t i = 0; i < processes.size(); i++) {
+    for (int i = 0; i < processes.size(); i++) {
         processes[i].TTWT(completion[i].second);
     }
+    return processes;
 }

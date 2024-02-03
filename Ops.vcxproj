@@ -123,7 +123,7 @@
   <ItemGroup>
     <ClCompile Include="Form2.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="NPP.cpp" />
+    <ClCompile Include="NPP_algo.h" />
     <ClCompile Include="PP.cpp" />
     <ClCompile Include="SJF.cpp" />
     <ClCompile Include="FCFS.cpp" />

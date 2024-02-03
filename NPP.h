@@ -9,6 +9,7 @@
 #include<stdlib.h>
 #include <stdexcept>
 #include <cliext/list>
+#include "NPP_algo.h"
 namespace Ops {
 
 	using namespace System;
@@ -385,9 +386,19 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Please enter valid numeric values for arrival, burst, and priority.", "Error");
 		return;
 	}
-
+	int time_sum = 0;
+	std::vector<NPPProcess> processes;
 	// Perform the NPP algorithm logic here
-
+	for (int i = 0; i < arrivalVector.size(); i++) {
+		NPPProcess p;
+		p.id = i + 1;
+		p.at = arrivalVector[i];
+		p.bt = burstVector[i];
+		p.pr = priorityVector[i];
+		time_sum += p.bt;
+		processes.push_back(p);
+	}
+	std::vector<NPPProcess> results = comp(processes, time_sum);
 	// Display the output in the DataGridView
 	NPPDataGrid->RowCount = arrivalVector.size();
 	NPPDataGrid->ColumnCount = 7; // Set ColumnCount for process details
@@ -420,15 +431,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		// Completion Time calculation
 		completionTime += burstVector[i] + 1;
-		NPPDataGrid->Rows[i]->Cells["CT"]->Value = completionTime;
+		NPPDataGrid->Rows[i]->Cells["CT"]->Value = results[i].cp;
 
 		// Turnaround Time calculation
 		int turnaroundTime = completionTime - arrivalVector[i];
-		NPPDataGrid->Rows[i]->Cells["TT"]->Value = turnaroundTime;
+		NPPDataGrid->Rows[i]->Cells["TT"]->Value = results[i].tt;
 
 		// Waiting Time calculation
 		int waitingTime = turnaroundTime - burstVector[i];
-		NPPDataGrid->Rows[i]->Cells["WT"]->Value = waitingTime;
+		NPPDataGrid->Rows[i]->Cells["WT"]->Value = results[i].wt;
 
 	
 	}

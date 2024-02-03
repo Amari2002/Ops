@@ -30,14 +30,14 @@
     <ClCompile Include="SJF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NPP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FCFS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PP.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPP_algo.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
