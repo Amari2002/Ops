@@ -291,6 +291,7 @@ namespace Ops {
 	}
 private: System::Void FCFSDataGrid_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
+
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ ar = textBoxArrivalTime->Text;
 	String^ br = textBoxBurstTime->Text;
@@ -298,6 +299,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	// Split the input into individual values for arrival time and burst time
 	array<String^>^ arrivalValues = ar->Split(' ');
 	array<String^>^ burstValues = br->Split(' ');
+
+
 
 	// Validate and parse each value for arrival time
 	cliext::list<int> parsedArrivalValues;
@@ -311,7 +314,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			return;
 		}
 	}
-
+	// Sort the parsed arrival time values
+	parsedArrivalValues.sort();
 	// Validate and parse each value for burst time
 	cliext::list<int> parsedBurstValues;
 	for each (String ^ value in burstValues) {
@@ -324,6 +328,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			return;
 		}
 	}
+
+
 
 	// Check if the number of parsed values for arrival time and burst time match
 	if (parsedArrivalValues.size() != parsedBurstValues.size()) {
@@ -354,12 +360,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	// Perform FCFS scheduling to calculate completion time, turnaround time, and waiting time
 	int currentTime = 0;
 	int processID = 1;
+
 	cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
 	cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
 
 	for (int i = 0; i < parsedArrivalValues.size(); ++i) {
 		int arrivalTime = *arrivalIterator;
 		int burstTime = *burstIterator;
+
 		// Update the "Process" column
 		FCFSDataGrid->Rows[i]->Cells["Process"]->Value = processID;
 
@@ -383,11 +391,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		// Move to the next process
 		currentTime = completionTime;
 		++processID;
+
 		++arrivalIterator;
 		++burstIterator;
-	
+
 	}
-}
-};
+}};
 }
 #endif

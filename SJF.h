@@ -189,6 +189,7 @@ namespace Ops {
 			this->label6->TabIndex = 55;
 			this->label6->Text = L"INPUT";
 			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label6->Click += gcnew System::EventHandler(this, &SJF::label6_Click);
 			// 
 			// label2
 			// 
@@ -489,6 +490,8 @@ private: System::Void dataGridView1_CellContentClick_1(System::Object^ sender, S
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 
+private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
 #endif // !SJF_H
