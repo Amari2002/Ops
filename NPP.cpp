@@ -38,7 +38,7 @@ struct Process {
     }
 };
 // Main function
-void completion(std::vector<Process>& processes) {
+void completion(std::vector<Process>& processes, int time_sum) {
     // vector to get the completion time and original index of the process, it is pair since
     // the queue doesn't store the processes by their index
     std::vector<std::pair<size_t, unsigned>> completion;
@@ -48,10 +48,9 @@ void completion(std::vector<Process>& processes) {
     std::vector<std::pair<size_t, Process>> queue;
     // vector to get the starting time and ending time of each process
     std::vector<Time_process> processing_time;
-    unsigned at_num, bt_num, pr_num, time_sum = 0, TT, id_num = 1;
+    unsigned time_sum = 0, id_num = 1;
     // inputting of arrival time, burst time, and priority
     // checking if the number of arrival time is equal to the number of burst time and their sign
-    int value;
     size_t size_at = 0, size_bt = 0, size_pr = 0;
     unsigned time = 0; // time is used to for identifying the current seconds/milliseconds each loop
     size_t j = 0; // j will be used to traverse the processes vector
