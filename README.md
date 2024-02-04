@@ -20,7 +20,7 @@ Here are the available algorithms:
 
 - Preemptive (PP) - Similar to NPP, PP necessitates priority levels and burst times for each process. Priority levels establish the execution order, while burst times signify the time required for each process. Input these values to simulate the preemptive execution of processes, allowing higher-priority processes to interrupt lower-priority ones dynamically.
 
-##Outputs
+## Outputs
 The game provides you with three attempts for each question. If you answer correctly on your first try, you'll receive a (1) point for that question. However, if your initial attempt is incorrect, you can try twice more to get the correct answer. Keep in mind that you will not lose points for wrong answers, but multiple attempts may affect your final score.
 
 **Datagrid Display:**</br>
