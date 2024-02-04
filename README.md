@@ -45,7 +45,7 @@ We love receiving feedback! We're always looking to improve our skills and our s
 
 Bechayda, Tyron P. - https://github.com/TyronBech</br>
 Ormita, Jhon Carl T. - https://github.com/jc0rmita</br>
-Gomelan, Christian G. - christiangomelanfog123@gmail.com
+Gomelan, Christian G. - https://github.com/chrisgomelan</br>
 Ramos, Princess Ryan D. - https://github.com/ryyraii</br>
 Virtudazo, Mary Rose Ann L. - https://github.com/Amari2002</br>
 
