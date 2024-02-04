@@ -1,5 +1,5 @@
 # Final-Project - Process Scheduler System
-![Design preview for the Frontpage section of Process Scheduler System](\Process-Scheduler-System\Process_Scheduler_Preview.png)
+![Design preview for the Frontpage section of Process Scheduler System](/image/Process_Scheduler_Preview.png)
 
 ## Welcome! 👋
 Thanks for checking out our final project in Operating System
