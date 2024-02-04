@@ -70,7 +70,7 @@ namespace Ops {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -101,14 +101,14 @@ namespace Ops {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->BackColor = System::Drawing::Color::Khaki;
+			this->label5->BackColor = System::Drawing::Color::Aquamarine;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Impact", 24.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(32, 533);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(107, 41);
+			this->label5->Size = System::Drawing::Size(119, 41);
 			this->label5->TabIndex = 73;
-			this->label5->Text = L"Output";
+			this->label5->Text = L"OUTPUT";
 			// 
 			// button4
 			// 
@@ -117,7 +117,7 @@ namespace Ops {
 			this->button4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button4->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->button4->Location = System::Drawing::Point(25, 142);
+			this->button4->Location = System::Drawing::Point(25, 132);
 			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(54, 39);
@@ -129,7 +129,7 @@ namespace Ops {
 			// 
 			this->textBoxBurstTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBoxBurstTime->Location = System::Drawing::Point(157, 358);
+			this->textBoxBurstTime->Location = System::Drawing::Point(157, 347);
 			this->textBoxBurstTime->MaxLength = 23;
 			this->textBoxBurstTime->Multiline = true;
 			this->textBoxBurstTime->Name = L"textBoxBurstTime";
@@ -140,7 +140,7 @@ namespace Ops {
 			// 
 			this->textBoxArrivalTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBoxArrivalTime->Location = System::Drawing::Point(157, 239);
+			this->textBoxArrivalTime->Location = System::Drawing::Point(157, 223);
 			this->textBoxArrivalTime->MaxLength = 23;
 			this->textBoxArrivalTime->Multiline = true;
 			this->textBoxArrivalTime->Name = L"textBoxArrivalTime";
@@ -150,9 +150,9 @@ namespace Ops {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::Color::DodgerBlue;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(316, 432);
+			this->button1->Location = System::Drawing::Point(301, 430);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(117, 33);
@@ -166,7 +166,7 @@ namespace Ops {
 			this->label6->BackColor = System::Drawing::Color::Aquamarine;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Impact", 25.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(536, 142);
+			this->label6->Location = System::Drawing::Point(541, 132);
 			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(160, 51);
@@ -178,18 +178,18 @@ namespace Ops {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::SandyBrown;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 50, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(11, 20);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Black", 35, System::Drawing::FontStyle::Bold));
+			this->label2->Location = System::Drawing::Point(49, 20);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(560, 81);
+			this->label2->Size = System::Drawing::Size(640, 67);
 			this->label2->TabIndex = 67;
 			this->label2->Text = L"PROCESS SCHEDULING";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label1
 			// 
+			this->label1->BackColor = System::Drawing::SystemColors::Control;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(226, 306);
@@ -204,21 +204,22 @@ namespace Ops {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::Color::Khaki;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(19, 188);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Arial", 20.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(19, 182);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(88, 32);
+			this->label3->Size = System::Drawing::Size(83, 32);
 			this->label3->TabIndex = 65;
 			this->label3->Text = L"FCFS";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label4
 			// 
+			this->label4->BackColor = System::Drawing::SystemColors::Control;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(226, 188);
+			this->label4->Location = System::Drawing::Point(226, 182);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(277, 38);
@@ -229,7 +230,7 @@ namespace Ops {
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Khaki;
-			this->pictureBox3->Location = System::Drawing::Point(13, 130);
+			this->pictureBox3->Location = System::Drawing::Point(11, 119);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(704, 736);
@@ -239,7 +240,7 @@ namespace Ops {
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::SandyBrown;
-			this->pictureBox1->Location = System::Drawing::Point(0, 11);
+			this->pictureBox1->Location = System::Drawing::Point(0, -1);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(739, 102);
@@ -260,6 +261,7 @@ namespace Ops {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
+			this->BackColor = System::Drawing::Color::Wheat;
 			this->ClientSize = System::Drawing::Size(739, 498);
 			this->Controls->Add(this->FCFSDataGrid);
 			this->Controls->Add(this->label5);
@@ -289,141 +291,133 @@ namespace Ops {
 		Close();
 		FCFSView->Show();
 	}
-private: System::Void FCFSDataGrid_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-}
+	private: System::Void FCFSDataGrid_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
 
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ ar = textBoxArrivalTime->Text;
-	String^ br = textBoxBurstTime->Text;
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ ar = textBoxArrivalTime->Text;
+		String^ br = textBoxBurstTime->Text;
 
-	// Split the input into individual values for arrival time and burst time
-	array<String^>^ arrivalValues = ar->Split(' ');
-	array<String^>^ burstValues = br->Split(' ');
+		// Split the input into individual values for arrival time and burst time
+		array<String^>^ arrivalValues = ar->Split(' ');
+		array<String^>^ burstValues = br->Split(' ');
 
 
 
-	// Validate and parse each value for arrival time
-	cliext::list<int> parsedArrivalValues;
-	for each (String ^ value in arrivalValues) {
-		int parsedValue;
-		if (Int32::TryParse(value, parsedValue)) {
-			if (parsedValue < 0) {
-				MessageBox::Show("Invalid input for arrival time. Please enter positive non - zero numeric values separated by space.", "Error");
+		// Validate and parse each value for arrival time
+		cliext::list<int> parsedArrivalValues;
+		for each (String ^ value in arrivalValues) {
+			int parsedValue;
+			if (Int32::TryParse(value, parsedValue)) {
+				parsedArrivalValues.push_back(parsedValue);
+			}
+			else {
+				MessageBox::Show("Invalid input for arrival time. Please enter valid numeric values separated by space.", "Error");
 				return;
 			}
-			parsedArrivalValues.push_back(parsedValue);
 		}
-		else {
-			MessageBox::Show("Invalid input for arrival time. Please enter valid numeric values separated by space.", "Error");
-			return;
-		}
-	}
-	// Sort the parsed arrival time values
-	//parsedArrivalValues.sort();
-	// Validate and parse each value for burst time
-	cliext::list<int> parsedBurstValues;
-	for each (String ^ value in burstValues) {
-		int parsedValue;
-		if (Int32::TryParse(value, parsedValue)) {
-			if (parsedValue <= 0) {
-				MessageBox::Show("Invalid input for burst time. Please enter positive non - zero numeric values separated by space.", "Error");
+		// Sort the parsed arrival time values
+		//parsedArrivalValues.sort();
+		// Validate and parse each value for burst time
+		cliext::list<int> parsedBurstValues;
+		for each (String ^ value in burstValues) {
+			int parsedValue;
+			if (Int32::TryParse(value, parsedValue)) {
+				parsedBurstValues.push_back(parsedValue);
+			}
+			else {
+				MessageBox::Show("Invalid input for burst time. Please enter valid numeric values separated by space.", "Error");
 				return;
 			}
-
-			parsedBurstValues.push_back(parsedValue);
 		}
-		else {
-			MessageBox::Show("Invalid input for burst time. Please enter valid numeric values separated by space.", "Error");
+		std::vector<std::pair<int, std::pair<int, int>>> pro;
+
+		// Check if the number of parsed values for arrival time and burst time match
+		if (parsedArrivalValues.size() != parsedBurstValues.size()) {
+			MessageBox::Show("Number of values for arrival time and burst time must be the same.", "Error");
 			return;
 		}
-	}
-	std::vector<std::pair<int, std::pair<int, int>>> pro;
-
-	// Check if the number of parsed values for arrival time and burst time match
-	if (parsedArrivalValues.size() != parsedBurstValues.size()) {
-		MessageBox::Show("Number of values for arrival time and burst time must be the same.", "Error");
-		return;
-	}
-	cliext::list<int>::iterator ArrivalIterator = parsedArrivalValues.begin();
-	cliext::list<int>::iterator BurstIterator = parsedBurstValues.begin();
-	for (int i = 0; i < parsedArrivalValues.size(); i++) {
-		std::pair<int, std::pair<int, int>> pairs;
-		pairs.first = i + 1;
-		pairs.second.first = *ArrivalIterator;
-		pairs.second.second = *BurstIterator;
-		pro.push_back(pairs);
-		++ArrivalIterator;
-		++BurstIterator;
-	}
-	for (int i = 0; i < pro.size(); i++) {
-		for (int j = 0; j < pro.size() - 1; j++) {
-			std::pair<int, std::pair<int, int>> tp;
-			if (pro[j].second.first > pro[j + 1].second.first || (pro[j].second.first == pro[j + 1].second.first && pro[j].first > pro[j + 1].first)) {
-				tp = pro[j];
-				pro[j] = pro[j + 1];
-				pro[j + 1] = tp;
+		cliext::list<int>::iterator ArrivalIterator = parsedArrivalValues.begin();
+		cliext::list<int>::iterator BurstIterator = parsedBurstValues.begin();
+		for (int i = 0; i < parsedArrivalValues.size(); i++) {
+			std::pair<int, std::pair<int, int>> pairs;
+			pairs.first = i + 1;
+			pairs.second.first = *ArrivalIterator;
+			pairs.second.second = *BurstIterator;
+			pro.push_back(pairs);
+			++ArrivalIterator;
+			++BurstIterator;
+		}
+		for (int i = 0; i < pro.size(); i++) {
+			for (int j = 0; j < pro.size() - 1; j++) {
+				std::pair<int, std::pair<int, int>> tp;
+				if (pro[j].second.first > pro[j + 1].second.first || (pro[j].second.first == pro[j + 1].second.first && pro[j].first > pro[j + 1].first)) {
+					tp = pro[j];
+					pro[j] = pro[j + 1];
+					pro[j + 1] = tp;
+				}
 			}
 		}
+		// Use the parsed values to set up the FCFSDataGrid
+		FCFSDataGrid->RowCount = parsedArrivalValues.size();
+		FCFSDataGrid->ColumnCount = 6; // Set ColumnCount to 6 for process ID, arrival time, burst time, completion time, turnaround time, and waiting time
+
+		// Create columns explicitly and set headers
+		FCFSDataGrid->Columns->Add("Process", "Process");
+		FCFSDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
+		FCFSDataGrid->Columns->Add("BurstTime", "Burst Time");
+		FCFSDataGrid->Columns->Add("CompletionTime", "Completion Time"); // Add column for Completion Time
+		FCFSDataGrid->Columns->Add("TurnaroundTime", "Turnaround Time"); // Add column for Turnaround Time
+		FCFSDataGrid->Columns->Add("WaitingTime", "Waiting Time"); // Add column for Waiting Time
+
+		// Set the display order of the columns
+		FCFSDataGrid->Columns["Process"]->DisplayIndex = 0;
+		FCFSDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
+		FCFSDataGrid->Columns["BurstTime"]->DisplayIndex = 2;
+		FCFSDataGrid->Columns["CompletionTime"]->DisplayIndex = 3; // Set "CompletionTime" column to be the fourth column
+		FCFSDataGrid->Columns["TurnaroundTime"]->DisplayIndex = 4; // Set "TurnaroundTime" column to be the fifth column
+		FCFSDataGrid->Columns["WaitingTime"]->DisplayIndex = 5; // Set "WaitingTime" column to be the sixth column
+
+		// Perform FCFS scheduling to calculate completion time, turnaround time, and waiting time
+		int currentTime = 0;
+		int processID = 1;
+
+		//cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
+		//cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
+
+		for (int i = 0; i < pro.size(); ++i) {
+			//int arrivalTime = *arrivalIterator;
+			//int burstTime = *burstIterator;
+
+			// Update the "Process" column
+			FCFSDataGrid->Rows[i]->Cells["Process"]->Value = pro[i].first;
+
+			// Update the "Arrival Time" column
+			FCFSDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = pro[i].second.first;
+
+			// Update the "Burst Time" column
+			FCFSDataGrid->Rows[i]->Cells["BurstTime"]->Value = pro[i].second.second;
+			// Update Completion Time
+			int completionTime = Math::Max(currentTime, pro[i].second.first) + pro[i].second.second;
+			FCFSDataGrid->Rows[i]->Cells["CompletionTime"]->Value = completionTime;
+
+			// Update Turnaround Time
+			int turnaroundTime = completionTime - pro[i].second.first;
+			FCFSDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = turnaroundTime;
+
+			// Update Waiting Time
+			int waitingTime = turnaroundTime - pro[i].second.second;
+			FCFSDataGrid->Rows[i]->Cells["WaitingTime"]->Value = waitingTime;
+
+			// Move to the next process
+			currentTime = completionTime;
+			++processID;
+
+			//++arrivalIterator;
+			//++burstIterator;
+
+		}
 	}
-	// Use the parsed values to set up the FCFSDataGrid
-	FCFSDataGrid->RowCount = parsedArrivalValues.size();
-	FCFSDataGrid->ColumnCount = 6; // Set ColumnCount to 6 for process ID, arrival time, burst time, completion time, turnaround time, and waiting time
-
-	// Create columns explicitly and set headers
-	FCFSDataGrid->Columns->Add("Process", "Process");
-	FCFSDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
-	FCFSDataGrid->Columns->Add("BurstTime", "Burst Time");
-	FCFSDataGrid->Columns->Add("CompletionTime", "Completion Time"); // Add column for Completion Time
-	FCFSDataGrid->Columns->Add("TurnaroundTime", "Turnaround Time"); // Add column for Turnaround Time
-	FCFSDataGrid->Columns->Add("WaitingTime", "Waiting Time"); // Add column for Waiting Time
-
-	// Set the display order of the columns
-	FCFSDataGrid->Columns["Process"]->DisplayIndex = 0;
-	FCFSDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
-	FCFSDataGrid->Columns["BurstTime"]->DisplayIndex = 2;
-	FCFSDataGrid->Columns["CompletionTime"]->DisplayIndex = 3; // Set "CompletionTime" column to be the fourth column
-	FCFSDataGrid->Columns["TurnaroundTime"]->DisplayIndex = 4; // Set "TurnaroundTime" column to be the fifth column
-	FCFSDataGrid->Columns["WaitingTime"]->DisplayIndex = 5; // Set "WaitingTime" column to be the sixth column
-
-	// Perform FCFS scheduling to calculate completion time, turnaround time, and waiting time
-	int currentTime = 0;
-	int processID = 1;
-
-	//cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
-	//cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
-
-	for (int i = 0; i < pro.size(); ++i) {
-		//int arrivalTime = *arrivalIterator;
-		//int burstTime = *burstIterator;
-
-		// Update the "Process" column
-		FCFSDataGrid->Rows[i]->Cells["Process"]->Value = pro[i].first;
-
-		// Update the "Arrival Time" column
-		FCFSDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = pro[i].second.first;
-
-		// Update the "Burst Time" column
-		FCFSDataGrid->Rows[i]->Cells["BurstTime"]->Value = pro[i].second.second;
-		// Update Completion Time
-		int completionTime = Math::Max(currentTime, pro[i].second.first) + pro[i].second.second;
-		FCFSDataGrid->Rows[i]->Cells["CompletionTime"]->Value = completionTime;
-
-		// Update Turnaround Time
-		int turnaroundTime = completionTime - pro[i].second.first;
-		FCFSDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = turnaroundTime;
-
-		// Update Waiting Time
-		int waitingTime = turnaroundTime - pro[i].second.second;
-		FCFSDataGrid->Rows[i]->Cells["WaitingTime"]->Value = waitingTime;
-
-		// Move to the next process
-		currentTime = completionTime;
-		++processID;
-
-		//++arrivalIterator;
-		//++burstIterator;
-
-	}
-}};
+	};
 }
 #endif

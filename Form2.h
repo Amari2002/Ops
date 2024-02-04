@@ -7,8 +7,8 @@
 #include "NPP.h"
 #include "PP.h"
 namespace Ops {
-	
-	
+
+
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -82,7 +82,7 @@ namespace Ops {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -91,6 +91,7 @@ namespace Ops {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form2::typeid));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -143,11 +144,11 @@ namespace Ops {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::Color::Khaki;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Arial Black", 20, System::Drawing::FontStyle::Bold));
-			this->label3->Location = System::Drawing::Point(267, 156);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Arial Black", 28, System::Drawing::FontStyle::Bold));
+			this->label3->Location = System::Drawing::Point(218, 146);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(199, 38);
+			this->label3->Size = System::Drawing::Size(281, 54);
 			this->label3->TabIndex = 12;
 			this->label3->Text = L"ALGORITHM";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -298,6 +299,7 @@ namespace Ops {
 			// button4
 			// 
 			this->button4->BackColor = System::Drawing::Color::Khaki;
+			this->button4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button4.BackgroundImage")));
 			this->button4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button4->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::White;
@@ -327,7 +329,7 @@ namespace Ops {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::White;
+			this->BackColor = System::Drawing::Color::Wheat;
 			this->ClientSize = System::Drawing::Size(704, 496);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
@@ -363,58 +365,58 @@ namespace Ops {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox4_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox9_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox6_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox7_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox8_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox5_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
-{
-	FCFS^ frm3 = gcnew FCFS(this);
-	frm3->Show();
-	Hide();
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	SJF^ frm1 = gcnew SJF(this);
-	frm1->Show();
-	Hide();
-}
-private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) 
-{
-	Close();
-	Form2View->Show(); //SHOWINGPREVIOUS FORM
-}
-private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label2_Click_1(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	NPP^ frm2 = gcnew NPP(this);
-	frm2->Show();
-	Hide();
-}
-private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	PP^ frm3 = gcnew PP(this);
-	frm3->Show();
-	Hide();
-}
-};
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox9_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox6_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox7_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox8_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		FCFS^ frm3 = gcnew FCFS(this);
+		frm3->Show();
+		Hide();
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		SJF^ frm1 = gcnew SJF(this);
+		frm1->Show();
+		Hide();
+	}
+	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		Close();
+		Form2View->Show(); //SHOWINGPREVIOUS FORM
+	}
+	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		NPP^ frm2 = gcnew NPP(this);
+		frm2->Show();
+		Hide();
+	}
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+		PP^ frm3 = gcnew PP(this);
+		frm3->Show();
+		Hide();
+	}
+	};
 }
 #endif // !FORM2_H
