@@ -57,6 +57,6 @@ This final project, titled "Process Scheduler System," is intended for submissio
 
 
 ## Download
-Exe file: https://github.com/Amari2002/Ops/raw/master/Ops.exe
+Exe file: https://github.com/Amari2002/Ops/releases/download/version/Ops.exe
 
 This system is completely free. Please share it with anyone who will find it useful for practice.
