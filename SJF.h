@@ -133,9 +133,6 @@ namespace Ops {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SJFDataGrid))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// textBoxBurstTime
-			// 
 			this->textBoxBurstTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxBurstTime->Location = System::Drawing::Point(154, 358);
@@ -145,9 +142,6 @@ namespace Ops {
 			this->textBoxBurstTime->Size = System::Drawing::Size(430, 51);
 			this->textBoxBurstTime->TabIndex = 57;
 			this->textBoxBurstTime->TextChanged += gcnew System::EventHandler(this, &SJF::textBox2_TextChanged);
-			// 
-			// textBoxArrivalTime
-			// 
 			this->textBoxArrivalTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxArrivalTime->Location = System::Drawing::Point(154, 239);
@@ -157,9 +151,6 @@ namespace Ops {
 			this->textBoxArrivalTime->Size = System::Drawing::Size(430, 51);
 			this->textBoxArrivalTime->TabIndex = 58;
 			this->textBoxArrivalTime->TextChanged += gcnew System::EventHandler(this, &SJF::textBox1_TextChanged);
-			// 
-			// button1
-			// 
 			this->button1->BackColor = System::Drawing::Color::DodgerBlue;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -171,11 +162,8 @@ namespace Ops {
 			this->button1->Text = L"COMPUTE";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &SJF::button1_Click);
-			// 
-			// label6
-			// 
 			this->label6->BackColor = System::Drawing::Color::Aquamarine;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Impact", 25.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"Impact", 25.8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(533, 142);
 			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
@@ -185,9 +173,6 @@ namespace Ops {
 			this->label6->Text = L"INPUT";
 			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label6->Click += gcnew System::EventHandler(this, &SJF::label6_Click);
-			// 
-			// label2
-			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::SandyBrown;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 50, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -199,9 +184,6 @@ namespace Ops {
 			this->label2->TabIndex = 54;
 			this->label2->Text = L"PROCESS SCHEDULING";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// label1
-			// 
 			this->label1->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(223, 306);
@@ -211,9 +193,6 @@ namespace Ops {
 			this->label1->TabIndex = 53;
 			this->label1->Text = L"Burst Time";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// label3
-			// 
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::Color::Khaki;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -225,9 +204,6 @@ namespace Ops {
 			this->label3->TabIndex = 52;
 			this->label3->Text = L"SJF";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// label4
-			// 
 			this->label4->Font = (gcnew System::Drawing::Font(L"Impact", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(223, 188);
@@ -237,9 +213,6 @@ namespace Ops {
 			this->label4->TabIndex = 51;
 			this->label4->Text = L"Arrival Time";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// pictureBox3
-			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Khaki;
 			this->pictureBox3->Location = System::Drawing::Point(10, 130);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
@@ -247,9 +220,6 @@ namespace Ops {
 			this->pictureBox3->Size = System::Drawing::Size(704, 396);
 			this->pictureBox3->TabIndex = 50;
 			this->pictureBox3->TabStop = false;
-			// 
-			// pictureBox1
-			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::SandyBrown;
 			this->pictureBox1->Location = System::Drawing::Point(-3, 11);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
@@ -258,9 +228,6 @@ namespace Ops {
 			this->pictureBox1->TabIndex = 49;
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->Click += gcnew System::EventHandler(this, &SJF::pictureBox1_Click);
-			// 
-			// button4
-			// 
 			this->button4->BackColor = System::Drawing::Color::Khaki;
 			this->button4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button4.BackgroundImage")));
 			this->button4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -273,30 +240,21 @@ namespace Ops {
 			this->button4->TabIndex = 59;
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &SJF::button4_Click);
-			// 
-			// label5
-			// 
 			this->label5->AutoSize = true;
 			this->label5->BackColor = System::Drawing::Color::Khaki;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Impact", 24.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Impact", 24.75, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(12, 473);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(107, 41);
 			this->label5->TabIndex = 60;
 			this->label5->Text = L"Output";
-			// 
-			// SJFDataGrid
-			// 
 			this->SJFDataGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->SJFDataGrid->Location = System::Drawing::Point(10, 529);
 			this->SJFDataGrid->Name = L"SJFDataGrid";
 			this->SJFDataGrid->Size = System::Drawing::Size(704, 281);
 			this->SJFDataGrid->TabIndex = 62;
 			this->SJFDataGrid->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SJF::dataGridView1_CellContentClick_1);
-			// 
-			// SJF
-			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;

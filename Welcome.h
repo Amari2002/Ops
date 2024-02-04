@@ -5,15 +5,14 @@
 #include "Form2.h"
 
 namespace Ops {
-	ref class Form2;
-	ref class SJF;
+
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	
+
 	/// <summary>
 	/// Summary for Ops
 	/// </summary>
@@ -61,6 +60,8 @@ namespace Ops {
 
 
 
+
+
 	protected:
 
 	protected:
@@ -69,7 +70,7 @@ namespace Ops {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -78,6 +79,7 @@ namespace Ops {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Welcome::typeid));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -127,12 +129,13 @@ namespace Ops {
 			// 
 			this->label1->AutoEllipsis = true;
 			this->label1->BackColor = System::Drawing::Color::SandyBrown;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(60, 241);
+			this->label1->Location = System::Drawing::Point(42, 240);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(609, 136);
+			this->label1->Padding = System::Windows::Forms::Padding(20, 0, 20, 0);
+			this->label1->Size = System::Drawing::Size(630, 136);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"Hi there User! Evaluate scheduling strategies in a seamless manner to handle task"
 				L"s effectively. Perfect for both developers alike and students, get right in and "
@@ -145,7 +148,7 @@ namespace Ops {
 			this->label2->BackColor = System::Drawing::Color::SandyBrown;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Black", 35, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(32, 15);
+			this->label2->Location = System::Drawing::Point(46, 18);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(640, 67);
@@ -247,13 +250,14 @@ namespace Ops {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::Color::Khaki;
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(334, 412);
+			this->button1->Location = System::Drawing::Point(331, 396);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(54, 39);
+			this->button1->Size = System::Drawing::Size(66, 47);
 			this->button1->TabIndex = 4;
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &Welcome::button1_Click_1);
@@ -262,7 +266,7 @@ namespace Ops {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::White;
+			this->BackColor = System::Drawing::Color::Wheat;
 			this->ClientSize = System::Drawing::Size(722, 500);
 			this->Controls->Add(this->pictureBox9);
 			this->Controls->Add(this->pictureBox8);
@@ -303,14 +307,14 @@ namespace Ops {
 	}
 	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e)
 	{
 		Form2^ frm = gcnew Form2(this);
 		frm->Show();
 		Hide();
 	}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }
 #endif // !WELCOME_H

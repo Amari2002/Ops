@@ -350,6 +350,7 @@ namespace Ops {
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"Form2";
 			this->Text = L"Algorithm";
+			this->Load += gcnew System::EventHandler(this, &Form2::Form2_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
@@ -417,6 +418,8 @@ namespace Ops {
 		frm3->Show();
 		Hide();
 	}
-	};
+	private: System::Void Form2_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
 #endif // !FORM2_H
