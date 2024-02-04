@@ -380,6 +380,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	for each (String ^ arrivalStr in arrivalTimes) {
 		int arrival;
 		if (Int32::TryParse(arrivalStr, arrival)) {
+			if (arrival < 0) {
+				MessageBox::Show("Invalid input for arrival time. Please enter positive non - zero numeric values separated by space.", "Error");
+				return;
+			}
 			arrivalVector.push_back(arrival);
 		}
 		else {
@@ -391,6 +395,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	for each (String ^ burstStr in burstTimes) {
 		int burst;
 		if (Int32::TryParse(burstStr, burst)) {
+			if (burst <= 0) {
+				MessageBox::Show("Invalid input for burst time. Please enter positive non - zero numeric values separated by space.", "Error");
+				return;
+			}
 			burstVector.push_back(burst);
 		}
 		else {
@@ -402,6 +410,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	for each (String ^ priorityStr in priorityValues) {
 		int priority;
 		if (Int32::TryParse(priorityStr, priority)) {
+			if (priority < 0) {
+				MessageBox::Show("Invalid input for priority time. Please enter positive non - zero numeric values separated by space.", "Error");
+				return;
+			}
 			priorityVector.push_back(priority);
 		}
 		else {

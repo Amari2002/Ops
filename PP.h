@@ -358,11 +358,21 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	array<String^>^ burstValues = br->Split(' ');
 	array<String^>^ priorityValues = pr->Split(' '); // Split the priority input
 
+	// Check if the number of inputs is the same for arrival, burst, and priority
+	if (arrivalValues->Length != burstValues->Length || arrivalValues->Length != priorityValues->Length) {
+		MessageBox::Show("Number of arrival times, burst times, and priorities must be equal.", "Error");
+		return;
+	}
+
 	// Validate and parse each value for arrival time
 	cliext::list<int> parsedArrivalValues;
 	for each (String ^ value in arrivalValues) {
 		int parsedValue;
 		if (Int32::TryParse(value, parsedValue)) {
+			if(parsedValue < 0) {
+				MessageBox::Show("Invalid input for arrival time. Please enter positive non - zero numeric values separated by space.", "Error");
+				return;
+			}
 			parsedArrivalValues.push_back(parsedValue);
 		}
 		else {
@@ -376,6 +386,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	for each (String ^ value in burstValues) {
 		int parsedValue;
 		if (Int32::TryParse(value, parsedValue)) {
+			if (parsedValue <= 0) {
+				MessageBox::Show("Invalid input for burst time. Please enter positive non - zero numeric values separated by space.", "Error");
+				return;
+			}
 			parsedBurstValues.push_back(parsedValue);
 		}
 		else {
@@ -389,6 +403,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	for each (String ^ value in priorityValues) {
 		int parsedValue;
 		if (Int32::TryParse(value, parsedValue)) {
+			if (parsedValue < 0) {
+				MessageBox::Show("Invalid input for priority time. Please enter positive non - zero numeric values separated by space.", "Error");
+				return;
+			}
 			parsedPriorityValues.push_back(parsedValue);
 		}
 		else {
