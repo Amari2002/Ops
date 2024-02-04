@@ -433,16 +433,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			}
 		}
 	}
-	while (time < time_sum) {
+	for (unsigned time = 0; time < time_sum; time++) {
 		// while the arrival time is equal to the current time, it will be pushed to the queue
 		// getting ready for processing
-		while (j < processes.size() && time >= processes[j].at) {
+		while (j < processes.size() && time == processes[j].at) {
 			queue.push_back(std::make_pair(j, processes[j]));
 			j++;
-			std::cout << "PR PUSHED TO THE QUEUE" << std::endl;
 		}
 		if (queue.size() > 0) {
-			// Each loop the queue will be sorted according to their shortest burst time or arrival time or ID
+			// Each loop the queue will be sorted according to their priority or arrival time or ID
 			for (int i = 0; i < queue.size(); i++) {
 				for (int j = 0; j < queue.size() - 1; j++) {
 					std::pair<int, PPPProcess> tp;
@@ -456,27 +455,17 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 					}
 				}
 			}
-			std::cout << "QUEUE HAS BEEN SORTED" << std::endl;
-			// taking the process id to monitor their time of process
-			Time_PPprocess current_process;
-			current_process.p_id = queue[0].second.id;
-			current_process.time.first = time;
-			// the while loop will decrement the first process in the queue until reaching 0
-			while (queue[0].second.bt > 0) {
-				queue[0].second.bt--;
-				time++;
+			// decrementing the burst time of the first process in the queue
+			queue[0].second.bt--;
+			// if the burst time reach 0 it means its done, then the current time will be pushed to the completion vector
+			// then erasing the first element in the queue, else moving the first element of the queue to the back of the queue
+			if (queue[0].second.bt == 0) {
+				completion.push_back(std::make_pair(queue[0].first, time + 1));
+				queue.erase(queue.begin());
 			}
-			std::cout << "QUEUE HAS BEEN USED BURST" << std::endl;
-			current_process.time.second = time;
-			processing_time.push_back(current_process);
-			// after the loop, the current time will be stored to the completion vector,
-			// along with the process which is done processing then erase the process to the queue
-			completion.push_back(std::make_pair(queue[0].first, time));
-			queue.erase(queue.begin());
 		}
 		else {
 			// Idle time, the excess time will be added to the total time to reach the end time of process
-			time++;
 			time_sum++;
 		}
 	}
@@ -524,13 +513,13 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		PPDataGrid->Rows[i]->Cells["Process"]->Value = processes[i].id;
 
 		// Set the arrival time in the second column
-		PPDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = processes[i].id;
+		PPDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = processes[i].at;
 
 		// Set the burst time in the third column
-		PPDataGrid->Rows[i]->Cells["BurstTime"]->Value = processes[i].id;
+		PPDataGrid->Rows[i]->Cells["BurstTime"]->Value = processes[i].bt;
 
 		// Set the priority in the fourth column
-		PPDataGrid->Rows[i]->Cells["Priority"]->Value = processes[i].id;
+		PPDataGrid->Rows[i]->Cells["Priority"]->Value = processes[i].pr;
 
 		PPDataGrid->Rows[i]->Cells["CT"]->Value = processes[i].cp;
 
