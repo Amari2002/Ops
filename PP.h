@@ -7,6 +7,39 @@
 #include<stdlib.h>
 #include <stdexcept>
 #include <cliext/list>
+#include <iostream>
+
+
+struct Time_PPprocess {
+	unsigned p_id = 0;
+	std::pair<unsigned, unsigned> time;
+};
+
+/*
+	Process structure, this is where the attributes of each process is stored
+	id = process id number
+	at = arrival time
+	bt = burst time
+	pr = priority
+	cp = completion time
+	tt = turnaround time
+	wt = waiting time
+*/
+struct PPPProcess {
+	unsigned id = 0;
+	unsigned at = 0;
+	unsigned bt = 0;
+	unsigned pr = 0;
+	unsigned cp = 0;
+	unsigned tt = 0;
+	unsigned wt = 0;
+	void TTWT(const unsigned& completion_time) {
+		this->cp = completion_time;
+		this->tt = this->cp - this->at;
+		this->wt = this->tt - this->bt;
+	}
+};
+
 namespace Ops {
 
 	using namespace System;
@@ -369,8 +402,99 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Number of values for arrival time, burst time, and priority must be the same.", "Error");
 		return;
 	}
-
-	// Use the parsed values to set up the SJFDataGrid
+	std::vector<PPPProcess> processes;
+	std::vector<std::pair<int, int>> completion;
+	std::vector<std::pair<int, PPPProcess>> queue;
+	std::vector<Time_PPprocess> processing_time;
+	int time_sum = 0, j = 0, time = 0;
+	cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
+	cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
+	cliext::list<int>::iterator priorityIterator = parsedPriorityValues.begin();
+	for (int i = 0; i < parsedArrivalValues.size() && i < parsedArrivalValues.size() && i < parsedPriorityValues.size(); i++) {
+		PPPProcess p;
+		p.id = i + 1;
+		p.at = *arrivalIterator;
+		p.bt = *burstIterator;
+		p.pr = *priorityIterator;
+		time_sum += p.bt;
+		processes.push_back(p);
+		++arrivalIterator;
+		++burstIterator;
+		++priorityIterator;
+	}
+	for (int i = 0; i < processes.size(); i++) {
+		for (int j = 0; j < processes.size() - 1; j++) {
+			PPPProcess tp;
+			if (processes[j].at > processes[j + 1].at
+				|| (processes[j].at == processes[j + 1].at && processes[j].id > processes[j + 1].id)) {
+				tp = processes[j];
+				processes[j] = processes[j + 1];
+				processes[j + 1] = tp;
+			}
+		}
+	}
+	while (time < time_sum) {
+		// while the arrival time is equal to the current time, it will be pushed to the queue
+		// getting ready for processing
+		while (j < processes.size() && time >= processes[j].at) {
+			queue.push_back(std::make_pair(j, processes[j]));
+			j++;
+			std::cout << "PR PUSHED TO THE QUEUE" << std::endl;
+		}
+		if (queue.size() > 0) {
+			// Each loop the queue will be sorted according to their shortest burst time or arrival time or ID
+			for (int i = 0; i < queue.size(); i++) {
+				for (int j = 0; j < queue.size() - 1; j++) {
+					std::pair<int, PPPProcess> tp;
+					std::cout << "WE ARE SORTING QUEUE" << std::endl;
+					if ((queue[j].second.pr > queue[j + 1].second.pr)
+						|| (queue[j].second.pr == queue[j + 1].second.pr && queue[j].second.at > queue[j + 1].second.at)
+						|| (queue[j].second.pr == queue[j + 1].second.pr && queue[j].second.at == queue[j + 1].second.at && queue[j].first > queue[j + 1].first)) {
+						tp = queue[j];
+						queue[j] = queue[j + 1];
+						queue[j + 1] = tp;
+					}
+				}
+			}
+			std::cout << "QUEUE HAS BEEN SORTED" << std::endl;
+			// taking the process id to monitor their time of process
+			Time_PPprocess current_process;
+			current_process.p_id = queue[0].second.id;
+			current_process.time.first = time;
+			// the while loop will decrement the first process in the queue until reaching 0
+			while (queue[0].second.bt > 0) {
+				queue[0].second.bt--;
+				time++;
+			}
+			std::cout << "QUEUE HAS BEEN USED BURST" << std::endl;
+			current_process.time.second = time;
+			processing_time.push_back(current_process);
+			// after the loop, the current time will be stored to the completion vector,
+			// along with the process which is done processing then erase the process to the queue
+			completion.push_back(std::make_pair(queue[0].first, time));
+			queue.erase(queue.begin());
+		}
+		else {
+			// Idle time, the excess time will be added to the total time to reach the end time of process
+			time++;
+			time_sum++;
+		}
+	}
+	for (int i = 0; i < completion.size(); i++) {
+		for (int j = 0; j < completion.size() - 1; j++) {
+			std::pair<int, int> tp;
+			if (completion[j].first > completion[j + 1].first) {
+				tp = completion[j];
+				completion[j] = completion[j + 1];
+				completion[j + 1] = tp;
+			}
+		}
+		std::cout << "SORTING THE COMPLETION" << std::endl;
+	}
+	for (int i = 0; i < processes.size(); i++) {
+		processes[i].TTWT(completion[i].second);
+		std::cout << "COMPUTING THE TTWT" << std::endl;
+	}
 	PPDataGrid->RowCount = parsedArrivalValues.size();
 	PPDataGrid->ColumnCount = 4; // Set ColumnCount to 4 for process ID, arrival time, burst time, and priority
 
@@ -379,31 +503,42 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	PPDataGrid->Columns->Add("ArrivalTime", "Arrival Time");
 	PPDataGrid->Columns->Add("BurstTime", "Burst Time");
 	PPDataGrid->Columns->Add("Priority", "Priority"); // Add column for Priority
+	PPDataGrid->Columns->Add("CT", "Completion Time");
+	PPDataGrid->Columns->Add("TT", "Turnaround Time");
+	PPDataGrid->Columns->Add("WT", "Waiting Time");
 
 	// Set the display order of the columns
 	PPDataGrid->Columns["Process"]->DisplayIndex = 0;
 	PPDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
 	PPDataGrid->Columns["BurstTime"]->DisplayIndex = 2;
 	PPDataGrid->Columns["Priority"]->DisplayIndex = 3; // Set "Priority" column to be the fourth column
+	PPDataGrid->Columns["CT"]->DisplayIndex = 4;
+	PPDataGrid->Columns["TT"]->DisplayIndex = 5;
+	PPDataGrid->Columns["WT"]->DisplayIndex = 6;
 
 	// Populate the cells with parsed values for arrival time, burst time, and priority
 	int i = 0;
 	int processID = 1;
-	for each (int arrivalValue in parsedArrivalValues) {
+	for (int i = 0; i < processes.size(); i++) {
 		// Set the process ID in the first column
-		PPDataGrid->Rows[i]->Cells["Process"]->Value = processID;
+		PPDataGrid->Rows[i]->Cells["Process"]->Value = processes[i].id;
 
 		// Set the arrival time in the second column
-		PPDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = arrivalValue;
+		PPDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = processes[i].id;
 
 		// Set the burst time in the third column
-		PPDataGrid->Rows[i]->Cells["BurstTime"]->Value = burstValues[i];
+		PPDataGrid->Rows[i]->Cells["BurstTime"]->Value = processes[i].id;
 
 		// Set the priority in the fourth column
-		PPDataGrid->Rows[i]->Cells["Priority"]->Value = priorityValues[i];
+		PPDataGrid->Rows[i]->Cells["Priority"]->Value = processes[i].id;
 
-		++i;
-		++processID;
+		PPDataGrid->Rows[i]->Cells["CT"]->Value = processes[i].cp;
+
+		// Turnaround Time calculation
+		PPDataGrid->Rows[i]->Cells["TT"]->Value = processes[i].tt;
+
+		// Waiting Time calculation
+		PPDataGrid->Rows[i]->Cells["WT"]->Value = processes[i].wt;
 	}
 }
 };

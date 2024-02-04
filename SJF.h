@@ -25,11 +25,6 @@ namespace Ops {
 
 	
 
-	struct Time_process {
-		unsigned p_id = 0;
-		std::pair<unsigned, unsigned> time;
-	};
-
 
 	struct Process {
 		unsigned id = 0;
