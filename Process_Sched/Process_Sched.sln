@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Process_Sched", "Process_Sched\Process_Sched.vdproj", "{BD0A883E-3DAC-4789-BE7A-7A024B06D577}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD0A883E-3DAC-4789-BE7A-7A024B06D577}.Debug|Default.ActiveCfg = Debug
+		{BD0A883E-3DAC-4789-BE7A-7A024B06D577}.Debug|Default.Build.0 = Debug
+		{BD0A883E-3DAC-4789-BE7A-7A024B06D577}.Release|Default.ActiveCfg = Release
+		{BD0A883E-3DAC-4789-BE7A-7A024B06D577}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {163CBE18-9B07-47F5-828B-9CEF66DA48BE}
+	EndGlobalSection
+EndGlobal

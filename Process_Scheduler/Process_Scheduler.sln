@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Process_Scheduler", "Process_Scheduler\Process_Scheduler.vdproj", "{72DCA043-1F30-46B7-AAA7-6F3118E31A46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72DCA043-1F30-46B7-AAA7-6F3118E31A46}.Debug|Default.ActiveCfg = Debug
+		{72DCA043-1F30-46B7-AAA7-6F3118E31A46}.Debug|Default.Build.0 = Debug
+		{72DCA043-1F30-46B7-AAA7-6F3118E31A46}.Release|Default.ActiveCfg = Release
+		{72DCA043-1F30-46B7-AAA7-6F3118E31A46}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A4A2CDD-7CA4-45BB-86FB-DE61F5769CA9}
+	EndGlobalSection
+EndGlobal
