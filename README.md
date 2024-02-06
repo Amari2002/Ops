@@ -58,6 +58,6 @@ This final project, titled "Process Scheduler System," is intended for submissio
 
 ## Download
 Exe file: https://github.com/Amari2002/Ops/releases/download/version/setup.exe </br>
-MSI File: https://github.com/Amari2002/Ops/blob/master/Process_Sched.msi
+MSI File: </br>https://github.com/Amari2002/Ops/blob/master/Process_Sched.msi
 
 This system is completely free. Please share it with anyone who will find it useful for practice.
