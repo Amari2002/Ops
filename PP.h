@@ -410,7 +410,8 @@ namespace Ops {
 		std::vector<std::pair<int, int>> completion;
 		std::vector<std::pair<int, PPPProcess>> queue;
 		std::vector<Time_PPprocess> processing_time;
-		int time_sum = 0, j = 0, time = 0;
+		double time_sum = 0, time = 0;
+		int j = 0;
 		cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
 		cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
 		cliext::list<int>::iterator priorityIterator = parsedPriorityValues.begin();
@@ -443,7 +444,7 @@ namespace Ops {
 			++burstIterator;
 			++priorityIterator;
 		}
-
+		double total_time = time_sum;
 		for (int i = 0; i < processes.size(); i++) {
 			for (int j = 0; j < processes.size() - 1; j++) {
 				PPPProcess tp;
@@ -517,6 +518,7 @@ namespace Ops {
 		PPDataGrid->Columns->Add("CT", "Completion Time");
 		PPDataGrid->Columns->Add("TT", "Turnaround Time");
 		PPDataGrid->Columns->Add("WT", "Waiting Time");
+		PPDataGrid->Columns->Add("CU", "CPU Utilization");
 
 		// Set the display order of the columns
 		PPDataGrid->Columns["Process"]->DisplayIndex = 0;
@@ -526,6 +528,7 @@ namespace Ops {
 		PPDataGrid->Columns["CT"]->DisplayIndex = 4;
 		PPDataGrid->Columns["TT"]->DisplayIndex = 5;
 		PPDataGrid->Columns["WT"]->DisplayIndex = 6;
+		PPDataGrid->Columns["CU"]->DisplayIndex = 7;
 
 		// Populate the cells with parsed values for arrival time, burst time, and priority
 		int i = 0;
@@ -551,6 +554,9 @@ namespace Ops {
 			// Waiting Time calculation
 			PPDataGrid->Rows[i]->Cells["WT"]->Value = processes[i].wt;
 		}
+		time_sum--;
+		double CPU_util = ceil((total_time / time_sum) * 100);
+		PPDataGrid->Rows[0]->Cells["CU"]->Value = CPU_util;
 	}
 	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

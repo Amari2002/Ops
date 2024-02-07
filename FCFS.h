@@ -10,6 +10,19 @@
 #include<stdlib.h>
 #include <stdexcept>
 #include <cliext/list>
+struct FCFSProcess {
+	unsigned id = 0;
+	unsigned at = 0;
+	unsigned bt = 0;
+	unsigned cp = 0;
+	unsigned tt = 0;
+	unsigned wt = 0;
+	void TTWT(const unsigned& completion_time) {
+		this->cp = completion_time;
+		this->tt = this->cp - this->at;
+		this->wt = this->tt - this->bt;
+	}
+};
 namespace Ops {
 
 	using namespace System;
@@ -226,6 +239,7 @@ namespace Ops {
 			this->label4->TabIndex = 64;
 			this->label4->Text = L"Arrival Time";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label4->Click += gcnew System::EventHandler(this, &FCFS::label4_Click);
 			// 
 			// pictureBox3
 			// 
@@ -330,49 +344,80 @@ namespace Ops {
 				return;
 			}
 		}
-		std::vector<std::pair<int, std::pair<int, int>>> pro;
+		std::vector<FCFSProcess> processes;
 
 		// Check if the number of parsed values for arrival time and burst time match
 		if (parsedArrivalValues.size() != parsedBurstValues.size()) {
 			MessageBox::Show("Number of values for arrival time and burst time must be the same.", "Error");
 			return;
 		}
+		double time_sum = 0;
 		cliext::list<int>::iterator ArrivalIterator = parsedArrivalValues.begin();
 		cliext::list<int>::iterator BurstIterator = parsedBurstValues.begin();
 		for (int i = 0; i < parsedArrivalValues.size(); i++) {
-			std::pair<int, std::pair<int, int>> pairs;
-			pairs.first = i + 1;
-			pairs.second.first = *ArrivalIterator;
-			pairs.second.second = *BurstIterator;
-			pro.push_back(pairs);
+			FCFSProcess pairs;
+			pairs.id = i + 1;
+			pairs.at = *ArrivalIterator;
+			pairs.bt = *BurstIterator;
+			processes.push_back(pairs);
+			time_sum += pairs.bt;
 			++ArrivalIterator;
 			++BurstIterator;
 		}
-
-		for (int i = 0; i < pro.size(); i++) {
-			if (pro[i].second.first < 0) {
+		double total_time = time_sum;
+		for (int i = 0; i < processes.size(); i++) {
+			if (processes[i].at < 0) {
 				MessageBox::Show("You entered a negative value for arrival time, please enter a valid input", "Error");
 				return;
 			}
-			else if (pro[i].second.second < 0) {
+			else if (processes[i].bt < 0) {
 				MessageBox::Show("You entered a negative value for burst time, please enter a valid input", "Error");
 				return;
 			}
-			else if (pro[i].second.second == 0) {
+			else if (processes[i].bt == 0) {
 				MessageBox::Show("burst time cannot be 0, please enter a valid input", "Error");
 				return;
 			}
 		}
 
-		for (int i = 0; i < pro.size(); i++) {
-			for (int j = 0; j < pro.size() - 1; j++) {
-				std::pair<int, std::pair<int, int>> tp;
-				if (pro[j].second.first > pro[j + 1].second.first || (pro[j].second.first == pro[j + 1].second.first && pro[j].first > pro[j + 1].first)) {
-					tp = pro[j];
-					pro[j] = pro[j + 1];
-					pro[j + 1] = tp;
+		for (int i = 0; i < processes.size(); i++) {
+			for (int j = 0; j < processes.size() - 1; j++) {
+				FCFSProcess tp;
+				if (processes[j].at > processes[j + 1].at || (processes[j].at == processes[j + 1].at && processes[j].id > processes[j + 1].id)) {
+					tp = processes[j];
+					processes[j] = processes[j + 1];
+					processes[j + 1] = tp;
 				}
 			}
+		}
+		std::vector<unsigned> completion;
+		std::vector<FCFSProcess> queue;
+		int idle_time = 0, time = 0, j = 0;
+		while (time < time_sum) {
+			while (j < processes.size() && time >= processes[j].at) {
+				queue.push_back(processes[j]);
+				j++;
+			}
+			if (!queue.empty()) {
+				// the while loop will decrement the first process in the queue until reaching 0
+				while (queue[0].bt > 0) {
+					queue[0].bt--;
+					time++;
+				}
+				// after the loop, the current time will be stored to the completion vector,
+				// then erase the process to the queue
+				completion.push_back(time);
+				queue.erase(queue.begin());
+			}
+			else {
+				// Idle time, the excess time will be added to the total time to reach the end time of process
+				time++;
+				time_sum++;
+			}
+			idle_time++;
+		}
+		for (size_t i = 0; i < processes.size(); i++) {
+			processes[i].TTWT(completion[i]);
 		}
 		// Use the parsed values to set up the FCFSDataGrid
 		FCFSDataGrid->RowCount = parsedArrivalValues.size();
@@ -385,7 +430,7 @@ namespace Ops {
 		FCFSDataGrid->Columns->Add("CompletionTime", "Completion Time"); // Add column for Completion Time
 		FCFSDataGrid->Columns->Add("TurnaroundTime", "Turnaround Time"); // Add column for Turnaround Time
 		FCFSDataGrid->Columns->Add("WaitingTime", "Waiting Time"); // Add column for Waiting Time
-
+		FCFSDataGrid->Columns->Add("CPU Utilization", "CPU Utilization"); // Add column for Waiting Time
 		// Set the display order of the columns
 		FCFSDataGrid->Columns["Process"]->DisplayIndex = 0;
 		FCFSDataGrid->Columns["ArrivalTime"]->DisplayIndex = 1;
@@ -393,47 +438,54 @@ namespace Ops {
 		FCFSDataGrid->Columns["CompletionTime"]->DisplayIndex = 3; // Set "CompletionTime" column to be the fourth column
 		FCFSDataGrid->Columns["TurnaroundTime"]->DisplayIndex = 4; // Set "TurnaroundTime" column to be the fifth column
 		FCFSDataGrid->Columns["WaitingTime"]->DisplayIndex = 5; // Set "WaitingTime" column to be the sixth column
-
+		FCFSDataGrid->Columns["CPU Utilization"]->DisplayIndex = 6; // Set "WaitingTime" column to be the sixth column
 		// Perform FCFS scheduling to calculate completion time, turnaround time, and waiting time
 		int currentTime = 0;
 		int processID = 1;
 
 		//cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
 		//cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
-
-		for (int i = 0; i < pro.size(); ++i) {
+		int Fi = 0;
+		for (Fi = 0; Fi < processes.size(); ++Fi) {
 			//int arrivalTime = *arrivalIterator;
 			//int burstTime = *burstIterator;
 
 			// Update the "Process" column
-			FCFSDataGrid->Rows[i]->Cells["Process"]->Value = pro[i].first;
+			FCFSDataGrid->Rows[Fi]->Cells["Process"]->Value = processes[Fi].id;
 
 			// Update the "Arrival Time" column
-			FCFSDataGrid->Rows[i]->Cells["ArrivalTime"]->Value = pro[i].second.first;
+			FCFSDataGrid->Rows[Fi]->Cells["ArrivalTime"]->Value = processes[Fi].at;
 
 			// Update the "Burst Time" column
-			FCFSDataGrid->Rows[i]->Cells["BurstTime"]->Value = pro[i].second.second;
+			FCFSDataGrid->Rows[Fi]->Cells["BurstTime"]->Value = processes[Fi].bt;
 			// Update Completion Time
-			int completionTime = Math::Max(currentTime, pro[i].second.first) + pro[i].second.second;
-			FCFSDataGrid->Rows[i]->Cells["CompletionTime"]->Value = completionTime;
+			//int completionTime = Math::Max(currentTime, processes[Fi].at) + processes[Fi].bt;
+			FCFSDataGrid->Rows[Fi]->Cells["CompletionTime"]->Value = processes[Fi].cp;
 
 			// Update Turnaround Time
-			int turnaroundTime = completionTime - pro[i].second.first;
-			FCFSDataGrid->Rows[i]->Cells["TurnaroundTime"]->Value = turnaroundTime;
+			//int turnaroundTime = completionTime - processes[Fi].at;
+			FCFSDataGrid->Rows[Fi]->Cells["TurnaroundTime"]->Value = processes[Fi].tt;
 
 			// Update Waiting Time
-			int waitingTime = turnaroundTime - pro[i].second.second;
-			FCFSDataGrid->Rows[i]->Cells["WaitingTime"]->Value = waitingTime;
+			//int waitingTime = turnaroundTime - processes[Fi].bt;
+			FCFSDataGrid->Rows[Fi]->Cells["WaitingTime"]->Value = processes[Fi].wt;
 
 			// Move to the next process
-			currentTime = completionTime;
+			//currentTime = completionTime;
 			++processID;
 
 			//++arrivalIterator;
 			//++burstIterator;
 
 		}
+		time_sum--;
+		double CPU_util = ceil((total_time / time_sum) * 100);
+		//int waitingTime = turnaroundTime - processes[Fi].bt;
+		FCFSDataGrid->Rows[0]->Cells["CPU Utilization"]->Value = CPU_util;
 	}
-	};
+
+	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
 #endif

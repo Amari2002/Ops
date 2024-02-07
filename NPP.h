@@ -418,7 +418,8 @@ namespace Ops {
 			return;
 		}
 
-		int time_sum = 0, time = 0, j = 0;
+		double time_sum = 0, time = 0;
+		int j = 0;
 		std::vector<NPPProcess> processes;
 		// Perform the NPP algorithm logic here
 		for (int i = 0; i < arrivalVector.size() && i < burstVector.size() && i < priorityVector.size(); i++) {
@@ -460,6 +461,7 @@ namespace Ops {
 				}
 			}
 		}
+		double total_time = time_sum;
 		while (time < time_sum) {
 			// while the arrival time is equal to the current time, it will be pushed to the queue
 			// getting ready for processing
@@ -528,6 +530,7 @@ namespace Ops {
 		NPPDataGrid->Columns->Add("CT", "Completion Time");
 		NPPDataGrid->Columns->Add("TT", "Turnaround Time");
 		NPPDataGrid->Columns->Add("WT", "Waiting Time");
+		NPPDataGrid->Columns->Add("CU", "CPU Utilization");
 
 		// Set the display order of the columns
 		NPPDataGrid->Columns["ID"]->DisplayIndex = 0;
@@ -537,6 +540,7 @@ namespace Ops {
 		NPPDataGrid->Columns["CT"]->DisplayIndex = 4;
 		NPPDataGrid->Columns["TT"]->DisplayIndex = 5;
 		NPPDataGrid->Columns["WT"]->DisplayIndex = 6;
+		NPPDataGrid->Columns["CU"]->DisplayIndex = 7;
 
 		int completionTime = 0; // Initialize completion time for the first process
 
@@ -560,6 +564,9 @@ namespace Ops {
 
 
 		}
+		time_sum--;
+		double CPU_util = ceil((total_time / time_sum) * 100);
+		NPPDataGrid->Rows[0]->Cells["CU"]->Value = CPU_util;
 		// Update the DataGridView to reflect the changes
 		NPPDataGrid->Refresh();
 	}
