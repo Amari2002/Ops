@@ -60,6 +60,6 @@ This final project, titled "Process Scheduler System," is intended for submissio
 EXE File: 
 https://github.com/Amari2002/Ops/raw/master/setup.exe </br>
 MSI File: 
-https://github.com/Amari2002/Ops/raw/master/Process_Scheduler_Setup.msi
+https://github.com/Amari2002/Ops/raw/master/Process_Scheduler-System-Setup.msi
 
 This system is completely free. Please share it with anyone who will find it useful for practice.
