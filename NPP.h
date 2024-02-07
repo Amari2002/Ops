@@ -171,7 +171,7 @@ namespace Ops {
 			this->textBoxBurstTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxBurstTime->Location = System::Drawing::Point(155, 337);
-			this->textBoxBurstTime->MaxLength = 23;
+			this->textBoxBurstTime->MaxLength = 35;
 			this->textBoxBurstTime->Multiline = true;
 			this->textBoxBurstTime->Name = L"textBoxBurstTime";
 			this->textBoxBurstTime->Size = System::Drawing::Size(430, 51);
@@ -182,7 +182,7 @@ namespace Ops {
 			this->textBoxArrivalTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxArrivalTime->Location = System::Drawing::Point(155, 219);
-			this->textBoxArrivalTime->MaxLength = 23;
+			this->textBoxArrivalTime->MaxLength = 35;
 			this->textBoxArrivalTime->Multiline = true;
 			this->textBoxArrivalTime->Name = L"textBoxArrivalTime";
 			this->textBoxArrivalTime->Size = System::Drawing::Size(430, 51);
@@ -287,7 +287,7 @@ namespace Ops {
 			this->textBoxPriority->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxPriority->Location = System::Drawing::Point(155, 451);
-			this->textBoxPriority->MaxLength = 23;
+			this->textBoxPriority->MaxLength = 35;
 			this->textBoxPriority->Multiline = true;
 			this->textBoxPriority->Name = L"textBoxPriority";
 			this->textBoxPriority->Size = System::Drawing::Size(430, 51);
@@ -424,6 +424,22 @@ namespace Ops {
 		for (int i = 0; i < arrivalVector.size() && i < burstVector.size() && i < priorityVector.size(); i++) {
 			NPPProcess p;
 			p.id = i + 1;
+			if (arrivalVector[i] < 0) {
+				MessageBox::Show("You entered a negative value for arrival time, please enter a valid input", "Error");
+				return;
+			}
+			else if (burstVector[i] < 0) {
+				MessageBox::Show("You entered a negative value for burst time, please enter a valid input", "Error");
+				return;
+			}
+			else if (burstVector[i] == 0) {
+				MessageBox::Show("burst time cannot be 0, please enter a valid input", "Error");
+				return;
+			}
+			else if (priorityVector[i] < 0) {
+				MessageBox::Show("You entered a negative value for priority, please enter a valid input", "Error");
+				return;
+			}
 			p.at = arrivalVector[i];
 			p.bt = burstVector[i];
 			p.pr = priorityVector[i];

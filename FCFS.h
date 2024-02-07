@@ -130,7 +130,7 @@ namespace Ops {
 			this->textBoxBurstTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxBurstTime->Location = System::Drawing::Point(157, 347);
-			this->textBoxBurstTime->MaxLength = 23;
+			this->textBoxBurstTime->MaxLength = 35;
 			this->textBoxBurstTime->Multiline = true;
 			this->textBoxBurstTime->Name = L"textBoxBurstTime";
 			this->textBoxBurstTime->Size = System::Drawing::Size(430, 51);
@@ -141,7 +141,7 @@ namespace Ops {
 			this->textBoxArrivalTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxArrivalTime->Location = System::Drawing::Point(157, 223);
-			this->textBoxArrivalTime->MaxLength = 23;
+			this->textBoxArrivalTime->MaxLength = 35;
 			this->textBoxArrivalTime->Multiline = true;
 			this->textBoxArrivalTime->Name = L"textBoxArrivalTime";
 			this->textBoxArrivalTime->Size = System::Drawing::Size(430, 51);
@@ -348,6 +348,22 @@ namespace Ops {
 			++ArrivalIterator;
 			++BurstIterator;
 		}
+
+		for (int i = 0; i < pro.size(); i++) {
+			if (pro[i].second.first < 0) {
+				MessageBox::Show("You entered a negative value for arrival time, please enter a valid input", "Error");
+				return;
+			}
+			else if (pro[i].second.second < 0) {
+				MessageBox::Show("You entered a negative value for burst time, please enter a valid input", "Error");
+				return;
+			}
+			else if (pro[i].second.second == 0) {
+				MessageBox::Show("burst time cannot be 0, please enter a valid input", "Error");
+				return;
+			}
+		}
+
 		for (int i = 0; i < pro.size(); i++) {
 			for (int j = 0; j < pro.size() - 1; j++) {
 				std::pair<int, std::pair<int, int>> tp;

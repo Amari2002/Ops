@@ -150,7 +150,7 @@ namespace Ops {
 			this->textBoxPriority->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxPriority->Location = System::Drawing::Point(155, 440);
-			this->textBoxPriority->MaxLength = 23;
+			this->textBoxPriority->MaxLength = 35;
 			this->textBoxPriority->Multiline = true;
 			this->textBoxPriority->Name = L"textBoxPriority";
 			this->textBoxPriority->Size = System::Drawing::Size(430, 51);
@@ -196,7 +196,7 @@ namespace Ops {
 			this->textBoxBurstTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxBurstTime->Location = System::Drawing::Point(155, 328);
-			this->textBoxBurstTime->MaxLength = 23;
+			this->textBoxBurstTime->MaxLength = 35;
 			this->textBoxBurstTime->Multiline = true;
 			this->textBoxBurstTime->Name = L"textBoxBurstTime";
 			this->textBoxBurstTime->Size = System::Drawing::Size(430, 51);
@@ -207,7 +207,7 @@ namespace Ops {
 			this->textBoxArrivalTime->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 21, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBoxArrivalTime->Location = System::Drawing::Point(155, 217);
-			this->textBoxArrivalTime->MaxLength = 23;
+			this->textBoxArrivalTime->MaxLength = 35;
 			this->textBoxArrivalTime->Multiline = true;
 			this->textBoxArrivalTime->Name = L"textBoxArrivalTime";
 			this->textBoxArrivalTime->Size = System::Drawing::Size(430, 51);
@@ -414,9 +414,26 @@ namespace Ops {
 		cliext::list<int>::iterator arrivalIterator = parsedArrivalValues.begin();
 		cliext::list<int>::iterator burstIterator = parsedBurstValues.begin();
 		cliext::list<int>::iterator priorityIterator = parsedPriorityValues.begin();
+
 		for (int i = 0; i < parsedArrivalValues.size() && i < parsedArrivalValues.size() && i < parsedPriorityValues.size(); i++) {
 			PPPProcess p;
 			p.id = i + 1;
+			if (*arrivalIterator < 0) {
+				MessageBox::Show("You entered a negative value for arrival time, please enter a valid input", "Error");
+				return;
+			}
+			else if (*burstIterator < 0) {
+				MessageBox::Show("You entered a negative value for burst time, please enter a valid input", "Error");
+				return;
+			}
+			else if (*burstIterator == 0) {
+				MessageBox::Show("burst time cannot be 0, please enter a valid input", "Error");
+				return;
+			}
+			else if (*priorityIterator < 0) {
+				MessageBox::Show("You entered a negative value for priority, please enter a valid input", "Error");
+				return;
+			}
 			p.at = *arrivalIterator;
 			p.bt = *burstIterator;
 			p.pr = *priorityIterator;
@@ -426,6 +443,7 @@ namespace Ops {
 			++burstIterator;
 			++priorityIterator;
 		}
+
 		for (int i = 0; i < processes.size(); i++) {
 			for (int j = 0; j < processes.size() - 1; j++) {
 				PPPProcess tp;
